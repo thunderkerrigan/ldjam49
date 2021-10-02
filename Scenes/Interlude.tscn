@@ -33,7 +33,14 @@ animations = [ {
 [node name="Interlude" type="CanvasLayer"]
 script = ExtResource( 12 )
 
-[node name="BackgroundColor" type="ColorRect" parent="."]
+[node name="Control" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackgroundColor" type="ColorRect" parent="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0.101961, 0.454902, 0.329412, 1 )
@@ -41,63 +48,62 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Control"]
 position = Vector2( 224, 400 )
 frames = SubResource( 1 )
-frame = 4
 playing = true
 
-[node name="HeartBoxContainer2" type="HBoxContainer" parent="." groups=[
+[node name="HeartBoxContainer2" type="HBoxContainer" parent="Control" groups=[
 "HeartContainer",
 ]]
 anchor_right = 1.0
+margin_right = 160.0
+margin_bottom = 64.0
 script = ExtResource( 10 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Heart1" type="Control" parent="HeartBoxContainer2"]
+[node name="Heart1" type="Control" parent="Control/HeartBoxContainer2"]
 margin_right = 64.0
 margin_bottom = 64.0
 rect_min_size = Vector2( 64, 64 )
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="HeartBoxContainer2/Heart1"]
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Control/HeartBoxContainer2/Heart1"]
 position = Vector2( 32, 32 )
 frames = SubResource( 2 )
-frame = 1
 playing = true
 
-[node name="Heart2" type="Control" parent="HeartBoxContainer2"]
+[node name="Heart2" type="Control" parent="Control/HeartBoxContainer2"]
 margin_left = 68.0
 margin_right = 132.0
 margin_bottom = 64.0
 rect_min_size = Vector2( 64, 64 )
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="HeartBoxContainer2/Heart2"]
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Control/HeartBoxContainer2/Heart2"]
 position = Vector2( 32, 32 )
 frames = SubResource( 2 )
 frame = 1
 playing = true
 
-[node name="Heart3" type="Control" parent="HeartBoxContainer2"]
+[node name="Heart3" type="Control" parent="Control/HeartBoxContainer2"]
 margin_left = 136.0
 margin_right = 200.0
 margin_bottom = 64.0
 rect_min_size = Vector2( 64, 64 )
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="HeartBoxContainer2/Heart3"]
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Control/HeartBoxContainer2/Heart3"]
 position = Vector2( 32, 32 )
 frames = SubResource( 2 )
-frame = 1
 playing = true
 
-[node name="BackgroundColorTimer" type="Timer" parent="."]
+[node name="BackgroundColorTimer" type="Timer" parent="Control"]
 wait_time = 0.3
 autostart = true
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Control"]
 position = Vector2( 232, 384 )
 stream = ExtResource( 13 )
 pitch_scale = 1.3
 
-[connection signal="timeout" from="BackgroundColorTimer" to="." method="_on_BackgroundColorTimer_timeout"]
+[connection signal="timeout" from="Control/BackgroundColorTimer" to="." method="_on_BackgroundColorTimer_timeout"]

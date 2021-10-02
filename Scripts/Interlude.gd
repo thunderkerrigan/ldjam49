@@ -15,6 +15,13 @@ func _ready():
 #func _process(delta):
 #	pass
 
+func show():
+	$Control.show()
+	$Control/AudioStreamPlayer2D.play()
+
+func hide():
+	$Control.hide()
+	$Control/AudioStreamPlayer2D.stop()
 
 func _on_BackgroundColorTimer_timeout():
-	$BackgroundColor.color = Color(randf(), randf(), randf())
+	$Control/BackgroundColor.color = Color(randf(), randf(), randf())

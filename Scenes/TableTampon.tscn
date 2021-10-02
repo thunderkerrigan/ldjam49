@@ -8,7 +8,6 @@
 "Game",
 ]]
 script = ExtResource( 1 )
-new_variable = null
 
 [node name="Timer" type="Node" parent="."]
 

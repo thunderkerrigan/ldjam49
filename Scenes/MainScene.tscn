@@ -1,22 +1,25 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scripts/MainScene.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Interlude.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/Images/heart2.png" type="Texture" id=3]
 [ext_resource path="res://Assets/Fonts/BackToSchoolPersonalUseRegular-w1xX2.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://Scenes/TableTampon.tscn" type="PackedScene" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
 font_data = ExtResource( 4 )
 
-[node name="Node" type="Node"]
+[node name="MainScene" type="Node"]
 script = ExtResource( 1 )
+miniGames = [ ExtResource( 5 ) ]
 
 [node name="Interlude" parent="." instance=ExtResource( 2 )]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="TestControl(to delete)" type="Control" parent="CanvasLayer"]
+visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 __meta__ = {
@@ -48,5 +51,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="StartTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
 [connection signal="pressed" from="CanvasLayer/TestControl(to delete)/MinusButton" to="." method="_on_MinusButton_pressed"]
 [connection signal="pressed" from="CanvasLayer/TestControl(to delete)/PlusButton" to="." method="_on_PlusButton_pressed"]
+[connection signal="timeout" from="StartTimer" to="." method="_on_StartTimer_timeout"]
