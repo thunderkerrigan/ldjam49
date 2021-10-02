@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scripts/MainScene.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Interlude.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/Images/heart2.png" type="Texture" id=3]
 [ext_resource path="res://Assets/Fonts/BackToSchoolPersonalUseRegular-w1xX2.ttf" type="DynamicFontData" id=4]
-[ext_resource path="res://Scenes/TableTampon.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/MiniGame/TableTampon.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/MiniGame/Tinder/app.tscn" type="PackedScene" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
@@ -12,7 +13,7 @@ font_data = ExtResource( 4 )
 
 [node name="MainScene" type="Node"]
 script = ExtResource( 1 )
-miniGames = [ ExtResource( 5 ) ]
+miniGames = [ ExtResource( 5 ), ExtResource( 6 ) ]
 
 [node name="Interlude" parent="." instance=ExtResource( 2 )]
 

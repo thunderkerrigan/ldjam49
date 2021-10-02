@@ -83,7 +83,6 @@ rect_min_size = Vector2( 64, 64 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Control/HeartBoxContainer2/Heart2"]
 position = Vector2( 32, 32 )
 frames = SubResource( 2 )
-frame = 1
 playing = true
 
 [node name="Heart3" type="Control" parent="Control/HeartBoxContainer2"]
@@ -95,6 +94,7 @@ rect_min_size = Vector2( 64, 64 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Control/HeartBoxContainer2/Heart3"]
 position = Vector2( 32, 32 )
 frames = SubResource( 2 )
+frame = 1
 playing = true
 
 [node name="BackgroundColorTimer" type="Timer" parent="Control"]

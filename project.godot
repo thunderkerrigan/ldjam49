@@ -38,6 +38,11 @@ _global_script_classes=[ {
 "class": "InputEventSingleScreenTouch",
 "language": "GDScript",
 "path": "res://CustomInputEvents/InputEventSingleScreenTouch.gd"
+}, {
+"base": "Node",
+"class": "TinderProfile",
+"language": "GDScript",
+"path": "res://Scripts/TinderProfile.gd"
 } ]
 _global_script_class_icons={
 "InputEventMultiScreenDrag": "",
@@ -45,7 +50,8 @@ _global_script_class_icons={
 "InputEventScreenTwist": "",
 "InputEventSingleScreenDrag": "",
 "InputEventSingleScreenTap": "",
-"InputEventSingleScreenTouch": ""
+"InputEventSingleScreenTouch": "",
+"TinderProfile": ""
 }
 
 [application]

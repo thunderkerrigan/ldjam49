@@ -1,0 +1,60 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Assets/Images/medias/person3_1.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Images/medias/match.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/MiniGame/Tinder/matchScreen.gd" type="Script" id=7]
+
+[node name="MatchScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Image" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_clip_content = true
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 7
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_left = 0.0166667
+anchor_top = 0.5
+anchor_right = 1.01667
+anchor_bottom = 0.5
+margin_left = -8.0
+margin_top = -208.0
+margin_right = -8.0
+margin_bottom = 246.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 0
+custom_constants/margin_left = 0
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="MatchText" type="TextureRect" parent="MarginContainer"]
+margin_right = 480.0
+margin_bottom = 454.0
+rect_pivot_offset = Vector2( 540, 227 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tween" type="Tween" parent="."]
