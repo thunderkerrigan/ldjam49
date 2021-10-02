@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Assets/Fonts/AbBarberian-Erlr.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Assets/Fonts/AlloyInk-nRLyO.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Assets/Images/attila.jpg" type="Texture" id=3]
+[ext_resource path="res://Scripts/MainHUD.gd" type="Script" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 64
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 96
+font_data = ExtResource( 2 )
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource( 4 )
+
+[node name="attila" type="Sprite" parent="."]
+position = Vector2( 272, 376 )
+texture = ExtResource( 3 )
+
+[node name="StartButton" type="Button" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -88.0
+custom_fonts/font = SubResource( 1 )
+text = "START"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MainTitle" type="Label" parent="."]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -104.0
+margin_bottom = 93.0
+custom_fonts/font = SubResource( 3 )
+text = "HUN'S TABLE !!!"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
