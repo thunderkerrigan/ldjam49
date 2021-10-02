@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scripts/TableTampon.vs" type="Script" id=1]
 [ext_resource path="res://Scripts/TimerPrint.vs" type="Script" id=2]
 [ext_resource path="res://Scripts/Countdown.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/Stamp.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/HunTampon.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/ClickableTable.tscn" type="PackedScene" id=7]
 
@@ -87,6 +88,8 @@ __meta__ = {
 
 [node name="Hun Tampon" parent="Node2D" instance=ExtResource( 6 )]
 visible = false
+
+[node name="Node2D" parent="Node2D" instance=ExtResource( 4 )]
 
 [connection signal="timeout" from="Node2D/Timer/Timer" to="Node2D" method="_on_Timer_timeout"]
 [connection signal="timeout" from="Node2D/Countdown/CountdownTimer" to="Node2D/Countdown" method="_on_CountdownTimer_timeout"]

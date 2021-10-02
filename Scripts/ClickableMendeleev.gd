@@ -1,7 +1,7 @@
 
 extends Area2D
 
-signal clicked
+signal mendeleevClicked
 
 func _input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton \
@@ -10,5 +10,6 @@ func _input_event(viewport, event, shape_idx):
 		self.on_click()
 
 func on_click():
-	print("Click")
-	emit_signal("clicked")
+	print("ClickMendeleev")
+	#$Node2D._onButtonPressed()
+	emit_signal("mendeleevClicked")
