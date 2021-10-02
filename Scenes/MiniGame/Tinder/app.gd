@@ -5,6 +5,9 @@ signal win
 
 export var card: PackedScene = preload("res://Scenes/MiniGame/Tinder/card.tscn")
 export var match_scene: PackedScene = preload("res://Scenes/MiniGame/Tinder/matchScreen.tscn")
+export var soundClip: PackedScene = preload("res://Scenes/MiniGame/Tinder/SoundEffect.tscn")
+export (Array, AudioStream) var kissSounds
+
 
 var next_card = null
 var successCount = 5
@@ -30,7 +33,7 @@ func _on_Card_finished():
 
 func on_card_liked(isTable):
 	print_debug('on_card_liked isTable ', isTable)
-	
+	playSoundKiss()
 	if isTable == false:
 		game_over()
 	else:
@@ -47,8 +50,15 @@ func game_win():
 	$MusicPlayer.stop()	
 	emit_signal('win')
 	
+func playSoundKiss():
+	var kissType = kissSounds[randi() % kissSounds.size()]
+	var kiss = soundClip.instance()
+	add_child(kiss)
+	kiss.start(kissType)
+	
 func on_card_disliked(isTable):
 	print_debug('on_card_disliked isTable ', isTable)
+	playSoundKiss()
 	if isTable == true:
 		game_over()
 	else:

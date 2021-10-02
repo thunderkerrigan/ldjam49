@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/aww-cute-reaction-6208.mp3-549b53916da4a644589e0ccb236d8025.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sounds/aww-cute-reaction-6208.mp3"
+dest_files=[ "res://.import/aww-cute-reaction-6208.mp3-549b53916da4a644589e0ccb236d8025.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
