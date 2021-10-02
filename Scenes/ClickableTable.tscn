@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Assets/Images/TableHuns.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/ClickableCollider.gd" type="Script" id=2]
+
+[node name="Clickable" type="Area2D"]
+position = Vector2( 226.255, 315.175 )
+scale = Vector2( 0.8, 0.8 )
+script = ExtResource( 2 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -254.116, -99.5049, -231.297, -88.5915, -233.281, 153.487, -202.526, 163.408, -180.699, 152.495, -180.699, -17.1584, -31.88, 36.4164, -27.9115, 219.96, 0.860107, 225.912, 25.6633, 211.03, 23.679, 30.4636, 64.3561, 7.64468, 63.364, 48.3218, 83.2065, 53.2825, 103.049, 45.3455, 107.018, -14.182, 228.057, -87.5993, 229.049, 80.0699, 250.876, 88.0068, 269.726, 75.1093, 272.702, -152.088, 297.506, -170.938, 294.529, -190.78, 68.3246, -237.41, -255.108, -116.371 )
+
+[node name="TableHuns" type="Sprite" parent="."]
+position = Vector2( 21.8234, -5.45502 )
+texture = ExtResource( 1 )

@@ -1,0 +1,114 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Scripts/TableTampon.vs" type="Script" id=1]
+[ext_resource path="res://Scripts/TimerPrint.vs" type="Script" id=2]
+[ext_resource path="res://Scripts/Countdown.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/ClickableMendeleev.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/HunTampon.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Stamp.tscn" type="PackedScene" id=7]
+
+[sub_resource type="Theme" id=1]
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[node name="Node2D" type="Node2D" groups=[
+"Game",
+]]
+script = ExtResource( 1 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 480.0
+margin_bottom = 720.0
+mouse_filter = 2
+color = Color( 0, 0.654902, 0.470588, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Node" parent="."]
+
+[node name="Timer" type="Timer" parent="Timer"]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+margin_left = 168.999
+margin_top = 546.648
+margin_right = 313.999
+margin_bottom = 574.648
+rect_clip_content = false
+text = "Whose is that Table ?"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+margin_left = 161.0
+margin_top = 159.0
+margin_right = 305.0
+margin_bottom = 185.0
+rect_clip_content = false
+text = "Table of the Elements"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Countdown" type="Container" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+seconds = 5
+
+[node name="CountdownTimer" type="Timer" parent="Countdown"]
+process_mode = 0
+autostart = true
+
+[node name="Label" type="Label" parent="Countdown"]
+margin_left = 97.0
+margin_top = 601.0
+margin_right = 381.0
+margin_bottom = 707.0
+size_flags_vertical = 1
+text = "Timer"
+align = 1
+valign = 1
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 130.285
+margin_top = 95.8557
+margin_right = 326.285
+margin_bottom = 169.856
+theme = SubResource( 1 )
+custom_styles/normal = SubResource( 2 )
+text = "PERIODIC"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Clickable" parent="." instance=ExtResource( 4 )]
+
+[node name="Hun Tampon" parent="." instance=ExtResource( 6 )]
+
+[node name="Stamp_Cursor" parent="." instance=ExtResource( 7 )]
+
+[node name="Node" type="Node" parent="." groups=[
+"Game",
+]]
+
+[connection signal="timeout" from="Timer/Timer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="Countdown/CountdownTimer" to="Countdown" method="_on_CountdownTimer_timeout"]
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="Button" to="Hun Tampon" method="_on_Button_pressed"]
+[connection signal="mendeleevClicked" from="Clickable" to="." method="_on_Clickable_mendeleevClicked"]
