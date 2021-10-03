@@ -1,15 +1,23 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Scripts/TableTampon.vs" type="Script" id=1]
 [ext_resource path="res://Scripts/TimerPrint.vs" type="Script" id=2]
 [ext_resource path="res://Scripts/Countdown.gd" type="Script" id=3]
 [ext_resource path="res://Scenes/ClickableMendeleev.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/LoseScreen.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/HunTampon.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/Stamp.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/ObjectiveScreen.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/WinScreen.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Assets/Fonts/montserrat/Montserrat-Regular.otf" type="DynamicFontData" id=10]
+
+[sub_resource type="DynamicFont" id=2]
+size = 34
+font_data = ExtResource( 10 )
 
 [sub_resource type="Theme" id=1]
 
-[sub_resource type="StyleBoxEmpty" id=2]
+[sub_resource type="StyleBoxEmpty" id=3]
 
 [node name="Node2D" type="Node2D" groups=[
 "Game",
@@ -74,13 +82,15 @@ margin_left = 97.0
 margin_top = 601.0
 margin_right = 381.0
 margin_bottom = 707.0
-size_flags_vertical = 1
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 1, 0.00784314, 0.00784314, 1 )
 text = "Timer"
 align = 1
 valign = 1
 script = ExtResource( 2 )
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": false,
+"_editor_description_": ""
 }
 
 [node name="Button" type="Button" parent="."]
@@ -91,7 +101,7 @@ margin_top = 95.8557
 margin_right = 326.285
 margin_bottom = 169.856
 theme = SubResource( 1 )
-custom_styles/normal = SubResource( 2 )
+custom_styles/normal = SubResource( 3 )
 text = "PERIODIC"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -100,15 +110,21 @@ __meta__ = {
 [node name="Clickable" parent="." instance=ExtResource( 4 )]
 
 [node name="Hun Tampon" parent="." instance=ExtResource( 6 )]
+visible = false
 
 [node name="Stamp_Cursor" parent="." instance=ExtResource( 7 )]
 
-[node name="Node" type="Node" parent="." groups=[
-"Game",
-]]
+[node name="ObjectiveScreen" parent="." instance=ExtResource( 8 )]
+
+[node name="WinScreen" parent="." instance=ExtResource( 9 )]
+visible = false
+
+[node name="LoseScreen" parent="." instance=ExtResource( 5 )]
+visible = false
 
 [connection signal="timeout" from="Timer/Timer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="Countdown/CountdownTimer" to="Countdown" method="_on_CountdownTimer_timeout"]
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="Button" to="Hun Tampon" method="_on_Button_pressed"]
 [connection signal="mendeleevClicked" from="Clickable" to="." method="_on_Clickable_mendeleevClicked"]
+[connection signal="visibility_changed" from="WinScreen" to="." method="_on_WinScreen_visibility_changed"]
