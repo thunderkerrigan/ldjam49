@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Assets/Images/Circle-icons-flame.svg.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/MiniGame/Tinder/card.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Assets/Sounds/aww-cute-reaction-6208.mp3" type="AudioStream" id=5]
 [ext_resource path="res://Assets/Sounds/cartoon-kiss_cjohnstonewav-6381.mp3" type="AudioStream" id=6]
 [ext_resource path="res://Assets/Sounds/kissing-6174.mp3" type="AudioStream" id=7]
+[ext_resource path="res://Scenes/MiniGame/Chimie/MiniGameCountdownTimer.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Scenes/MiniGame/Tinder/app.gd" type="Script" id=11]
 
 [sub_resource type="Gradient" id=1]
@@ -123,7 +124,10 @@ __meta__ = {
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
 
+[node name="MiniGameCountdownTimer" parent="." instance=ExtResource( 8 )]
+
 [connection signal="dislike" from="CardContainer/Card" to="." method="on_card_disliked"]
 [connection signal="finished" from="CardContainer/Card" to="." method="_on_Card_finished"]
 [connection signal="like" from="CardContainer/Card" to="." method="on_card_liked"]
 [connection signal="moving" from="CardContainer/Card" to="." method="_on_Card_moving"]
+[connection signal="countownElapsed" from="MiniGameCountdownTimer" to="." method="_on_MiniGameCountdownTimer_countownElapsed"]

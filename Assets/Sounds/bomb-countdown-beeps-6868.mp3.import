@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/bomb-countdown-beeps-6868.mp3-096fcfff2d2598aeaf73dc45be2573c6.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sounds/bomb-countdown-beeps-6868.mp3"
+dest_files=[ "res://.import/bomb-countdown-beeps-6868.mp3-096fcfff2d2598aeaf73dc45be2573c6.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

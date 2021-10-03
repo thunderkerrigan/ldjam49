@@ -38,11 +38,15 @@ func _on_PlusButton_pressed():
 
 func didWin():
 	$Interlude.show()
+	$VictoryOrDefeatSoundEffect.play_victory()	
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	print_debug('tes un génie rancune')
 	$StartTimer.start()
 
 func didLose():
 	$Interlude.show()
+	$VictoryOrDefeatSoundEffect.play_defeat()
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)	
 	if life > 0:
 		life -= 1
 		$Interlude/Control/HeartBoxContainer2.update_health(life)

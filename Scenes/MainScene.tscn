@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scripts/MainScene.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Interlude.tscn" type="PackedScene" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://Scenes/MiniGame_TableTampon.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/MiniGame/Tinder/app.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/MiniGame_Mendeleev.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/MiniGame/Chimie/Ph_Chimie_mini_game.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/VictoryOrDefeatSoundEffect.tscn" type="PackedScene" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
@@ -14,7 +16,7 @@ font_data = ExtResource( 4 )
 
 [node name="MainScene" type="Node"]
 script = ExtResource( 1 )
-miniGames = [ ExtResource( 7 ), ExtResource( 6 ), ExtResource( 5 ) ]
+miniGames = [ ExtResource( 7 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 8 ) ]
 
 [node name="Interlude" parent="." instance=ExtResource( 2 )]
 
@@ -56,6 +58,8 @@ __meta__ = {
 [node name="StartTimer" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
+
+[node name="VictoryOrDefeatSoundEffect" parent="." instance=ExtResource( 9 )]
 
 [connection signal="pressed" from="CanvasLayer/TestControl(to delete)/MinusButton" to="." method="_on_MinusButton_pressed"]
 [connection signal="pressed" from="CanvasLayer/TestControl(to delete)/PlusButton" to="." method="_on_PlusButton_pressed"]

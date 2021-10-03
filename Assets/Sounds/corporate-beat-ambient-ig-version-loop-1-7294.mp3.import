@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/corporate-beat-ambient-ig-version-loop-1-7294.mp3-e30e9515915d6d3f233ef2b329e79ab7.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sounds/corporate-beat-ambient-ig-version-loop-1-7294.mp3"
+dest_files=[ "res://.import/corporate-beat-ambient-ig-version-loop-1-7294.mp3-e30e9515915d6d3f233ef2b329e79ab7.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

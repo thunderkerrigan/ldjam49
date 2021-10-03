@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/smashing-glasswav-6166.mp3-bb6f38298020a174d90c2bd9deb1a6c2.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sounds/Defeat/smashing-glasswav-6166.mp3"
+dest_files=[ "res://.import/smashing-glasswav-6166.mp3-bb6f38298020a174d90c2bd9deb1a6c2.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

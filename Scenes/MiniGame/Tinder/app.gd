@@ -5,16 +5,17 @@ signal win
 
 export var card: PackedScene = preload("res://Scenes/MiniGame/Tinder/card.tscn")
 export var match_scene: PackedScene = preload("res://Scenes/MiniGame/Tinder/matchScreen.tscn")
-export var soundClip: PackedScene = preload("res://Scenes/MiniGame/Tinder/SoundEffect.tscn")
+export var soundClip: PackedScene = preload("res://Scenes/SoundEffect.tscn")
 export (Array, AudioStream) var kissSounds
 
 
 var next_card = null
-var successCount = 5
+var successCount = 3
 func _ready():
 	randomize()
 	$MusicPlayer.play()
 	$CardContainer/Card.enabled = true
+	
 
 func _on_Card_moving():
 	if $CardContainer.get_child_count() != 1: return
@@ -47,6 +48,7 @@ func game_over():
 	
 	
 func game_win():
+	$MiniGameCountdownTimer.stop()
 	$MusicPlayer.stop()	
 	emit_signal('win')
 	
@@ -69,3 +71,6 @@ func on_card_disliked(isTable):
 func on_keep_swiping():
 	print_debug('on_keep_swiping')
 	$MatchContainer.get_child(0).call_deferred("queue_free")
+
+func _on_MiniGameCountdownTimer_countownElapsed():
+	game_over()
