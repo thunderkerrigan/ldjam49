@@ -3,6 +3,8 @@ extends Node
 signal win
 signal lose
 
+var goodEnding = preload("res://Scenes/MiniGame/Chimie/good_ending.tscn")
+
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -25,9 +27,17 @@ func _on_Pipettes_touched():
 	$ErlenMeyer/Control/ErlenmeyerProgress.value += 20
 	change_pipette_position()
 	if $ErlenMeyer/Control/ErlenmeyerProgress.value == 100:
-		emit_signal('win')
-		$MiniGameCountdownTimer.stop()
-		$Music.stop()
+		victory()
+		
+func victory():
+	$MiniGameCountdownTimer.stop()
+	var ending = goodEnding.instance()
+	add_child(ending)
+	yield(get_tree().create_timer(1.5), "timeout")
+	ending.queue_free()
+	$Music.stop()		
+	emit_signal('win')
+	
 
 func _on_MiniGameCountdownTimer_countownElapsed():
 	emit_signal('lose')

@@ -43,13 +43,18 @@ func on_card_liked(isTable):
 						game_win()
 	
 func game_over():
+	$MiniGameCountdownTimer.stop()	
 	$MusicPlayer.stop()	
 	emit_signal('lose')
 	
 	
 func game_win():
 	$MiniGameCountdownTimer.stop()
-	$MusicPlayer.stop()	
+	var matching = match_scene.instance()
+	add_child(matching)
+	yield(get_tree().create_timer(1.5), "timeout")
+	matching.queue_free()
+	$MusicPlayer.stop()		
 	emit_signal('win')
 	
 func playSoundKiss():
