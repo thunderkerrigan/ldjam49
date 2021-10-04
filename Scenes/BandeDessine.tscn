@@ -1,0 +1,212 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://Assets/Images/Bd/bd2.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Images/Bd/bd1 (1).png" type="Texture" id=2]
+[ext_resource path="res://Scenes/Stamp.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/AttilaAnimated.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/Images/Bd/bd4.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Images/Bd/bd6.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Images/Bd/bd7.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Images/Bd/bd8.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Images/TableHuns.png" type="Texture" id=9]
+[ext_resource path="res://Scripts/BDAnimation.gd" type="Script" id=10]
+
+[sub_resource type="Shader" id=1]
+code = "/* 
+Rainbow outline by @Farfalk and @ThePadDev, July 2021
+
+Apply to canvas items with transparent backgrounds.
+Check that there is sufficient transparent background space for the outline!
+
+CC0 License (but citation is welcome <3)
+*/
+
+shader_type canvas_item;
+
+uniform float line_thickness : hint_range(0, 20) = 1.0;    // thickness of the line
+uniform float sin_frequency : hint_range(0.1, 2.0) = 0.5;  // frequency of the rainbow
+uniform float sin_offset : hint_range(0.0, 360.0) = 0.0;   // offset of the rainbow, useful to differentiate objects using the same shader
+uniform float light_offset : hint_range(0.0, 1.0) = 0.5;   // this offsets all color channels; if set to 0 only red green and blue colors will be shown.
+
+void fragment() {
+	vec2 size = TEXTURE_PIXEL_SIZE * line_thickness;
+	
+	float outline = texture(TEXTURE, UV + vec2(-size.x, 0)).a;
+	outline += texture(TEXTURE, UV + vec2(0, size.y)).a;
+	outline += texture(TEXTURE, UV + vec2(size.x, 0)).a;
+	outline += texture(TEXTURE, UV + vec2(0, -size.y)).a;
+	outline += texture(TEXTURE, UV + vec2(-size.x, size.y)).a;
+	outline += texture(TEXTURE, UV + vec2(size.x, size.y)).a;
+	outline += texture(TEXTURE, UV + vec2(-size.x, -size.y)).a;
+	outline += texture(TEXTURE, UV + vec2(size.x, -size.y)).a;
+	outline = min(outline, 1.0);
+	
+	vec4 animated_line_color = vec4(light_offset + sin(2.0*3.14*sin_frequency*TIME),
+							   light_offset + sin(2.0*3.14*sin_frequency*TIME + radians(120.0)),
+							   light_offset + sin(2.0*3.14*sin_frequency*TIME + radians(240.0)),
+							   1.0);
+	
+	vec4 color = texture(TEXTURE, UV);
+	COLOR = mix(color, animated_line_color, outline - color.a);
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+shader_param/line_thickness = 1.0
+shader_param/sin_frequency = 0.5
+shader_param/sin_offset = 0.0
+shader_param/light_offset = 0.5
+
+[sub_resource type="Animation" id=3]
+resource_name = "BDAnimation"
+length = 24.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Panel:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 5.3, 5.7, 10.2, 10.5, 18, 18.3, 22.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -15.119, 0 ), Vector2( -15.119, 0 ), Vector2( -626.276, 0 ), Vector2( -626.276, 0 ), Vector2( -16.9012, -561.266 ), Vector2( -16.9012, -561.266 ), Vector2( -627.152, -558.088 ), Vector2( -627.152, -558.088 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Panel/Hand:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 10.8, 14.6, 15.8, 16.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 92.2152, 92.2152, -49.8936, -49.8936 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Panel/Stamp:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 15.6, 15.8, 16.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 249.455, 977.562 ), Vector2( 310.266, 1179.79 ), Vector2( 310.266, 1179.79 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Panel/TableHuns:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 5.7 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Panel/TableHuns:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = false
+tracks/4/keys = {
+"times": PoolRealArray( 5.7, 6.3, 6.8, 7.3, 7.9, 8.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Panel" type="Panel" parent="."]
+margin_left = -626.276
+margin_right = 552.724
+margin_bottom = 1598.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="bd4" type="Sprite" parent="Panel"]
+position = Vector2( 257.392, 923.59 )
+texture = ExtResource( 5 )
+
+[node name="bd2" type="Sprite" parent="Panel"]
+position = Vector2( 257.392, 361.65 )
+texture = ExtResource( 1 )
+
+[node name="bd3" type="Sprite" parent="Panel"]
+position = Vector2( 868.541, 361.65 )
+scale = Vector2( 0.978, 1 )
+texture = ExtResource( 1 )
+
+[node name="bd6" type="Sprite" parent="Panel"]
+position = Vector2( 866.953, 925.178 )
+texture = ExtResource( 6 )
+
+[node name="bd1 (1)" type="Sprite" parent="Panel"]
+position = Vector2( 357.398, 293.392 )
+texture = ExtResource( 2 )
+
+[node name="bd7" type="Sprite" parent="Panel"]
+position = Vector2( 258.454, 829.097 )
+texture = ExtResource( 7 )
+
+[node name="AnimatedSprite" parent="Panel" instance=ExtResource( 4 )]
+position = Vector2( 192.315, 523.249 )
+scale = Vector2( 1.5, 1.5 )
+frame = 4
+playing = false
+offset = Vector2( -30.2676, 0 )
+
+[node name="AnimatedSprite2" parent="Panel" instance=ExtResource( 4 )]
+position = Vector2( 766.613, 1078.59 )
+scale = Vector2( 1.5, 1.5 )
+frame = 4
+playing = false
+
+[node name="Stamp2" parent="Panel" instance=ExtResource( 3 )]
+position = Vector2( 978.658, 1028.11 )
+scale = Vector2( 1.5, 1.5 )
+
+[node name="Stamp" parent="Panel" instance=ExtResource( 3 )]
+material = SubResource( 2 )
+position = Vector2( 310.266, 1179.79 )
+scale = Vector2( 1.5, 1.5 )
+
+[node name="Hand" type="Sprite" parent="Panel"]
+position = Vector2( 493.421, 1059.17 )
+rotation = -0.870807
+scale = Vector2( 0.595775, 0.595775 )
+texture = ExtResource( 8 )
+centered = false
+offset = Vector2( -480, -400 )
+
+[node name="TableHuns" type="Sprite" parent="Panel"]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 853.151, 435.341 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 9 )
+
+[node name="TableHuns" type="Sprite" parent="Panel/TableHuns"]
+position = Vector2( 183.757, 152.498 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 9 )
+
+[node name="TableHuns2" type="Sprite" parent="Panel/TableHuns"]
+position = Vector2( -459.711, 98.2863 )
+scale = Vector2( 0.606413, 0.527846 )
+texture = ExtResource( 9 )
+
+[node name="TableHuns" type="Sprite" parent="Panel/TableHuns/TableHuns2"]
+position = Vector2( 183.757, 152.498 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 9 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/BDAnimation = SubResource( 3 )
+script = ExtResource( 10 )
