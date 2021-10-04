@@ -90,7 +90,7 @@ __meta__ = {
 
 [node name="AnimatedSprite" parent="." instance=ExtResource( 2 )]
 position = Vector2( 404.774, 733.166 )
-frame = 0
+frame = 3
 speed_scale = 0.2
 
 [node name="Button" type="Button" parent="."]
@@ -126,6 +126,7 @@ visible = false
 script = null
 
 [node name="Objective_Screen" parent="." instance=ExtResource( 5 )]
+visible = false
 
 [connection signal="timeout" from="Timer/Timer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="Countdown/CountdownTimer" to="Countdown" method="_on_CountdownTimer_timeout"]
