@@ -1,6 +1,7 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Scripts/TableTampon.vs" type="Script" id=1]
+[ext_resource path="res://Scenes/AttilaAnimated.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scripts/Countdown.gd" type="Script" id=3]
 [ext_resource path="res://Scenes/Stamp.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/ObjectiveScreen.tscn" type="PackedScene" id=5]
@@ -10,9 +11,10 @@
 [ext_resource path="res://Scenes/WinScreen.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Scripts/WinScreen.gd" type="Script" id=10]
 [ext_resource path="res://Scenes/LoseScreen.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Assets/Images/Fond.png" type="Texture" id=12]
 
 [sub_resource type="DynamicFont" id=1]
-size = 40
+size = 34
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 8 )
 
@@ -34,6 +36,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Fond" type="Sprite" parent="ColorRect"]
+modulate = Color( 1, 1, 1, 0.572549 )
+position = Vector2( 240, 360 )
+texture = ExtResource( 12 )
+
 [node name="Timer" type="Node" parent="."]
 
 [node name="Timer" type="Timer" parent="Timer"]
@@ -42,10 +49,10 @@ one_shot = true
 autostart = true
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
-margin_left = 24.973
-margin_top = 514.997
-margin_right = 455.973
-margin_bottom = 569.997
+margin_left = 66.5774
+margin_top = 458.0
+margin_right = 437.577
+margin_bottom = 513.0
 rect_clip_content = false
 custom_fonts/normal_font = SubResource( 1 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
@@ -83,8 +90,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Clickable" parent="." instance=ExtResource( 7 )]
-position = Vector2( 218.549, 268.148 )
+[node name="AnimatedSprite" parent="." instance=ExtResource( 2 )]
+position = Vector2( 404.774, 733.166 )
+frame = 1
+speed_scale = 0.2
 
 [node name="Button" type="Button" parent="."]
 visible = false
@@ -99,24 +108,31 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Clickable" parent="." instance=ExtResource( 7 )]
+position = Vector2( 218.549, 268.148 )
+scale = Vector2( 0.5, 0.5 )
+
 [node name="Hun Tampon" parent="." instance=ExtResource( 6 )]
+pause_mode = 2
 visible = false
 
 [node name="Stamp_Cursor" parent="." instance=ExtResource( 4 )]
-
-[node name="Objective_Screen" parent="." instance=ExtResource( 5 )]
+pause_mode = 2
 
 [node name="WinScreen" parent="." instance=ExtResource( 9 )]
 visible = false
 script = ExtResource( 10 )
+
+[node name="Objective_Screen" parent="." instance=ExtResource( 5 )]
+visible = false
 
 [node name="LoseScreen" parent="." instance=ExtResource( 11 )]
 visible = false
 
 [connection signal="timeout" from="Timer/Timer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="Countdown/CountdownTimer" to="Countdown" method="_on_CountdownTimer_timeout"]
-[connection signal="clicked" from="Clickable" to="Hun Tampon" method="_on_Clickable_clicked"]
-[connection signal="clicked" from="Clickable" to="WinScreen" method="_on_Clickable_clicked"]
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="Button" to="Hun Tampon" method="_on_Button_pressed"]
+[connection signal="clicked" from="Clickable" to="Hun Tampon" method="_on_Clickable_clicked"]
+[connection signal="clicked" from="Clickable" to="WinScreen" method="_on_Clickable_clicked"]
 [connection signal="visibility_changed" from="WinScreen" to="." method="_on_WinScreen_visibility_changed"]
