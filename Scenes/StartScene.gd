@@ -1,6 +1,11 @@
 extends Control
 
 export (PackedScene) var Game
+export (PackedScene) var intro
+
+
+var introDuration = 13
+var intro_has_been_displayed = false
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -41,4 +46,11 @@ func endless():
 	start(false)
 
 func story():
+	if !intro_has_been_displayed:
+		intro_has_been_displayed = true
+		var _intro = intro.instance()
+		add_child(_intro)
+		yield(get_tree().create_timer(introDuration), "timeout")
+		remove_child(_intro)
+		_intro.queue_free()
 	start(true)

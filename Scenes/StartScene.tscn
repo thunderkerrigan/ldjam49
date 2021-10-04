@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=2]
+[gd_scene load_steps=44 format=2]
 
 [ext_resource path="res://Assets/Images/thanos_background.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Images/fire/fire_105.png" type="Texture" id=2]
@@ -38,6 +38,7 @@
 [ext_resource path="res://Scenes/StartScene.gd" type="Script" id=36]
 [ext_resource path="res://Assets/Sounds/war-of-the-crown-epic-trailer-music-determination-fantasy-courage-bright-mood-8611.mp3" type="AudioStream" id=37]
 [ext_resource path="res://Scenes/MainScene.tscn" type="PackedScene" id=38]
+[ext_resource path="res://Scenes/BandeDessine.tscn" type="PackedScene" id=39]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -94,12 +95,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 Game = ExtResource( 38 )
+intro = ExtResource( 39 )
 
 [node name="fireBackground" type="AnimatedSprite" parent="."]
 position = Vector2( 240, 360 )
 scale = Vector2( 1, 1.5 )
 frames = SubResource( 1 )
-frame = 17
+frame = 24
 playing = true
 
 [node name="TextureRect" type="TextureRect" parent="."]
