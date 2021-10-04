@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/yaymp3-6326.mp3-bb715fba74bed1657c9eee5cca0d83c2.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sounds/Victory/yaymp3-6326.mp3"
+dest_files=[ "res://.import/yaymp3-6326.mp3-bb715fba74bed1657c9eee5cca0d83c2.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

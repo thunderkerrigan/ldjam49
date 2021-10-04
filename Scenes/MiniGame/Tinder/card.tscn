@@ -1,0 +1,224 @@
+[gd_scene load_steps=26 format=2]
+
+[ext_resource path="res://Assets/Images/portrait/hot dog.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Images/portrait/Background.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Images/portrait/Chevre.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Images/portrait/periodic table.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Images/portrait/Lama.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Images/portrait/turn table.png" type="Texture" id=6]
+[ext_resource path="res://Scenes/MiniGame/Tinder/card.gd" type="Script" id=7]
+[ext_resource path="res://Assets/Images/portrait/pool table.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Images/portrait/Stable.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Images/medias/person2_1.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Images/portrait/Turtle.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Images/portrait/benjamin franklin.png" type="Texture" id=12]
+[ext_resource path="res://Assets/Images/portrait/green table.png" type="Texture" id=13]
+[ext_resource path="res://Assets/Images/portrait/Staple.png" type="Texture" id=14]
+[ext_resource path="res://Assets/Images/portrait/dog.png" type="Texture" id=15]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+render_mode blend_mix,unshaded;
+
+uniform vec4 color : hint_color = vec4(1.0, 1.0, 1.0, 1.0);
+
+uniform float radius : hint_range(0.0, 1.0) = 0.0;
+uniform vec2 size = vec2(1.0, 1.0);
+
+void fragment() {
+	vec4 texture_color = texture(TEXTURE, UV);
+	//COLOR = texture_color * color;
+	COLOR = texture_color;
+	
+	vec2 size_ratio = vec2(max(1.0, size.x / size.y), max(1.0, size.y / size.x));
+	float half_radius = 0.5 * radius;
+	vec2 dist_max = half_radius / size_ratio;
+	vec2 edge_pos = clamp(UV, dist_max, 1.0 - dist_max);
+	float edge_dist = distance(UV * size_ratio, edge_pos * size_ratio);
+	COLOR.a *= step(edge_dist, half_radius + 0.000001);
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+shader_param/color = Color( 1, 1, 1, 1 )
+shader_param/radius = 0.069
+shader_param/size = Vector2( 1080, 1920 )
+
+[sub_resource type="DynamicFontData" id=3]
+font_path = "res://Assets/Fonts/BeautifulPeoplePersonalUse-dE0g.ttf"
+
+[sub_resource type="DynamicFont" id=4]
+size = 36
+font_data = SubResource( 3 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 20
+font_data = SubResource( 3 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+content_margin_right = 10.0
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color( 0.968627, 0.286275, 0.286275, 1 )
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+expand_margin_left = 25.0
+expand_margin_right = 25.0
+
+[sub_resource type="DynamicFontData" id=7]
+font_path = "res://Assets/Fonts/BeautifulPeoplePersonalUse-dE0g.ttf"
+
+[sub_resource type="DynamicFont" id=8]
+size = 96
+font_data = SubResource( 7 )
+
+[sub_resource type="StyleBoxFlat" id=9]
+content_margin_right = 10.0
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color( 0.254902, 0.882353, 0.705882, 1 )
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+expand_margin_left = 25.0
+expand_margin_right = 25.0
+
+[sub_resource type="DynamicFont" id=10]
+size = 96
+font_data = SubResource( 7 )
+
+[node name="Card" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 540, 960 )
+mouse_filter = 1
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+profilePictures = [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 5 ), ExtResource( 9 ), ExtResource( 14 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 15 ), ExtResource( 13 ), ExtResource( 1 ), ExtResource( 4 ), ExtResource( 8 ), ExtResource( 6 ) ]
+profileNames = [ "John Table", "John Paul Goatee", "Serge Laama", "Stable Center", "Steven Staples", "Zoë Turtle", "Benjamin Franklyn", "T Dog", "Gerart Buffet", "Hot Dog", "Perry Odic", "Snooky Poole", "DJ CheckOut" ]
+profileDescriptions = [ "Look at my curbs", "BEEEEEEEeeeeEEEE!!!", "I can be your table tonight...", "there's room for everyone!", "Don't let me hanging...", "Sometimes I feel like a furniture :(", "Yup. That's me", "The cooler one", "Just so you know, I'm vegan...", "The hotter one.", "I'm here to feel the chemistry", "* censored *", "Look at how the turntables..." ]
+isTables = [ true, false, false, false, false, false, false, false, true, false, true, true, true ]
+
+[node name="ImageContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Image" type="TextureRect" parent="ImageContainer"]
+material = SubResource( 2 )
+margin_right = 480.0
+margin_bottom = 720.0
+rect_clip_content = true
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 10 )
+expand = true
+stretch_mode = 7
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -158.0
+grow_horizontal = 0
+grow_vertical = 0
+rect_min_size = Vector2( 0, 150 )
+custom_constants/margin_left = 20
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+margin_left = 20.0
+margin_right = 480.0
+margin_bottom = 158.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_vertical = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+margin_right = 460.0
+margin_bottom = 158.0
+grow_horizontal = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Name" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+margin_right = 460.0
+margin_bottom = 71.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 4 )
+text = "lorem ipsum"
+
+[node name="Description" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+margin_top = 75.0
+margin_right = 460.0
+margin_bottom = 158.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 5 )
+text = "coucou belle table
+"
+valign = 1
+
+[node name="Nope" type="Label" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -208.0
+margin_top = 128.0
+margin_right = 212.0
+margin_bottom = 315.0
+rect_rotation = 15.5
+rect_scale = Vector2( 0.5, 0.5 )
+mouse_filter = 1
+custom_styles/normal = SubResource( 6 )
+custom_fonts/font = SubResource( 8 )
+custom_colors/font_color = Color( 0.968627, 0.286275, 0.286275, 1 )
+text = "NOPE"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Like" type="Label" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -472.0
+margin_top = 176.0
+margin_right = -134.0
+margin_bottom = 363.0
+rect_rotation = -15.5
+rect_scale = Vector2( 0.5, 0.5 )
+mouse_filter = 1
+custom_styles/normal = SubResource( 9 )
+custom_fonts/font = SubResource( 10 )
+custom_colors/font_color = Color( 0.254902, 0.882353, 0.705882, 1 )
+text = "LIKE"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="gui_input" from="." to="." method="_on_Card_gui_input"]

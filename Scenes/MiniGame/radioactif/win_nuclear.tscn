@@ -1,0 +1,98 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Scenes/MiniGame/radioactif/win_nuclear.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Images/Attila Freeman.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Images/enemi_2.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Images/enemi_1.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Images/enemi_3.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Images/enemi_4.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Images/enemi_5.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Images/HUNS TABABLE.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Images/YOU ARE.png" type="Texture" id=9]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( -448, 32 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FirstText" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 56.0
+margin_top = 8.0
+margin_right = -56.0001
+margin_bottom = -488.0
+texture = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="Control" parent="."]
+margin_left = -256.0
+margin_top = -200.0
+margin_right = 664.0
+margin_bottom = 720.0
+rect_rotation = 360.0
+rect_scale = Vector2( 0.511961, 0.511961 )
+rect_pivot_offset = Vector2( 460, 460 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="enemi_1" type="Sprite" parent="Control"]
+position = Vector2( 248, 600 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 4 )
+
+[node name="enemi_2" type="Sprite" parent="Control"]
+position = Vector2( 512, 760 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 3 )
+
+[node name="enemi_3" type="Sprite" parent="Control"]
+position = Vector2( 776, 456 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 5 )
+
+[node name="enemi_4" type="Sprite" parent="Control"]
+position = Vector2( 608, 144 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 6 )
+
+[node name="enemi_5" type="Sprite" parent="Control"]
+position = Vector2( 202, 186 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 7 )
+
+[node name="SecondText" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 56.0
+margin_top = 488.0
+margin_right = -56.0
+margin_bottom = -8.0
+texture = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tween" type="Tween" parent="."]
+repeat = true
+playback/repeat = true
+
+[node name="TweenText2" type="Tween" parent="."]
+
+[node name="TweenText" type="Tween" parent="."]

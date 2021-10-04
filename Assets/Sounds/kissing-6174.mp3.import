@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/kissing-6174.mp3-7fc6c73cc8538e2e853c355df75db0a6.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sounds/kissing-6174.mp3"
+dest_files=[ "res://.import/kissing-6174.mp3-7fc6c73cc8538e2e853c355df75db0a6.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

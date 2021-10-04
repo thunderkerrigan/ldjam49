@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/boingwav-6222.mp3-c900535dd7d8b365219362d91984c380.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sounds/Start/boingwav-6222.mp3"
+dest_files=[ "res://.import/boingwav-6222.mp3-c900535dd7d8b365219362d91984c380.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Assets/Images/periodic_table.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/ClickableMendeleev.gd" type="Script" id=2]
+
+[node name="Clickable" type="Area2D"]
+script = ExtResource( 2 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( 19.3465, 248.06, 43.285, 248.375, 43.6, 273.573, 67.5385, 273.258, 68.4834, 322.08, 310.703, 321.765, 311.648, 272.943, 433.546, 272.943, 433.546, 248.69, 460.634, 249.005, 460.949, 422.244, 448.98, 428.543, 449.925, 474.53, 360.785, 490.909, 116.045, 490.594, 78.8778, 474.216, 79.1928, 424.449, 17.7716, 423.819, 16.5117, 248.375, 16.5117, 248.375 )
+
+[node name="periodic_table" type="Sprite" parent="."]
+position = Vector2( 238.602, 369.586 )
+scale = Vector2( 0.437705, 0.437705 )
+texture = ExtResource( 1 )

@@ -1,6 +1,36 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scripts/MainScene.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Interlude.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/infinity_table.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/MiniGame/MiniGame_TableTampon.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/MiniGame/Tinder/app.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/MiniGame/MiniGame_Mendeleev.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/MiniGame/Chimie/Ph_Chimie_mini_game.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/VictoryOrDefeatSoundEffect.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scenes/MiniGame/radioactif/MiniGame_nuclear_chase.tscn" type="PackedScene" id=10]
 
-[node name="Node" type="Node"]
+[node name="MainScene" type="Node"]
 script = ExtResource( 1 )
+MiniGames = [ ExtResource( 7 ), ExtResource( 5 ), ExtResource( 10 ), ExtResource( 6 ), ExtResource( 8 ) ]
+
+[node name="Interlude" parent="." instance=ExtResource( 2 )]
+
+[node name="StartTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="VictoryOrDefeatSoundEffect" parent="." instance=ExtResource( 9 )]
+
+[node name="RemainingLifeTween" type="Tween" parent="."]
+
+[node name="InfinityTween" type="Tween" parent="."]
+repeat = true
+playback/repeat = true
+
+[node name="InfinityLayer" type="CanvasLayer" parent="."]
+
+[node name="InfinityTable" parent="InfinityLayer" instance=ExtResource( 3 )]
+rect_pivot_offset = Vector2( 140, 360 )
+
+[connection signal="timeout" from="StartTimer" to="." method="_on_StartTimer_timeout"]
