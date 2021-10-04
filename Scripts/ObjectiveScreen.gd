@@ -19,13 +19,10 @@ func start():
 	if clip.get_length() > 1.5:
 		audio.pitch_scale = clip.get_length()/1.8	
 	audio.start(clip)
-	$Timer.start(1.5)
-
-func _ready():
-	start()
-
-func _on_Timer_timeout():
+	yield(get_tree().create_timer(1.5), "timeout")
 	print("Fin de pause")
 	emit_signal("ended")
 	hide()
 
+func _ready():
+	start()
