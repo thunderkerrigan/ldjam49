@@ -17,3 +17,7 @@ func _show():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+
+func _on_Node2D_draw():
+	play("HorseCry")

@@ -183,6 +183,7 @@ scale = Vector2( 0.51743, 0.51743 )
 texture = ExtResource( 4 )
 
 [node name="PeriodicElementStamp (2)" type="Sprite" parent="ColorRect"]
+visible = false
 position = Vector2( 228.505, 319.796 )
 scale = Vector2( 0.710031, 0.710031 )
 texture = ExtResource( 5 )

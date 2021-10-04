@@ -144,14 +144,14 @@ __meta__ = {
 [node name="Clickable" parent="." instance=ExtResource( 4 )]
 position = Vector2( 2.06647, 32.5515 )
 
+[node name="WinScreen" parent="." instance=ExtResource( 9 )]
+visible = false
+script = null
+
 [node name="ClickablePeriodic" parent="." instance=ExtResource( 2 )]
 position = Vector2( 9.82627, -15.3644 )
 
 [node name="Stamp_Cursor" parent="." instance=ExtResource( 7 )]
-
-[node name="WinScreen" parent="." instance=ExtResource( 9 )]
-visible = false
-script = null
 
 [node name="Hun Tampon" parent="." instance=ExtResource( 6 )]
 visible = false
@@ -166,7 +166,7 @@ visible = false
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="Button" to="Hun Tampon" method="_on_Button_pressed"]
 [connection signal="mendeleevClicked" from="Clickable" to="." method="_on_Clickable_mendeleevClicked"]
+[connection signal="visibility_changed" from="WinScreen" to="." method="_on_WinScreen_visibility_changed"]
 [connection signal="periodicClicked" from="ClickablePeriodic" to="." method="_on_ClickablePeriodic_periodicClicked"]
 [connection signal="periodicClicked" from="ClickablePeriodic" to="Hun Tampon" method="_on_ClickablePeriodic_periodicClicked"]
-[connection signal="visibility_changed" from="WinScreen" to="." method="_on_WinScreen_visibility_changed"]
 [connection signal="ended" from="ObjectiveScreen" to="." method="_on_ObjectiveScreen_ended"]

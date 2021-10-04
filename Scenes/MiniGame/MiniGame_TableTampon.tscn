@@ -90,7 +90,7 @@ __meta__ = {
 
 [node name="AnimatedSprite" parent="." instance=ExtResource( 2 )]
 position = Vector2( 404.774, 733.166 )
-frame = 7
+frame = 0
 speed_scale = 0.2
 
 [node name="Button" type="Button" parent="."]
@@ -106,16 +106,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="WinScreen" parent="." instance=ExtResource( 9 )]
+visible = false
+script = null
+
 [node name="Clickable" parent="." instance=ExtResource( 7 )]
 position = Vector2( 218.549, 268.148 )
 scale = Vector2( 0.5, 0.5 )
 
 [node name="Stamp_Cursor" parent="." instance=ExtResource( 4 )]
 pause_mode = 2
-
-[node name="WinScreen" parent="." instance=ExtResource( 9 )]
-visible = false
-script = null
 
 [node name="Hun Tampon" parent="." instance=ExtResource( 6 )]
 pause_mode = 2
@@ -131,8 +131,8 @@ script = null
 [connection signal="timeout" from="Countdown/CountdownTimer" to="Countdown" method="_on_CountdownTimer_timeout"]
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="Button" to="Hun Tampon" method="_on_Button_pressed"]
+[connection signal="visibility_changed" from="WinScreen" to="." method="_on_WinScreen_visibility_changed"]
 [connection signal="clicked" from="Clickable" to="." method="_on_Clickable_clicked"]
 [connection signal="clicked" from="Clickable" to="WinScreen" method="_on_Clickable_clicked"]
 [connection signal="clicked" from="Clickable" to="Hun Tampon" method="_on_Clickable_clicked"]
-[connection signal="visibility_changed" from="WinScreen" to="." method="_on_WinScreen_visibility_changed"]
 [connection signal="ended" from="Objective_Screen" to="." method="_on_Objective_Screen_ended"]

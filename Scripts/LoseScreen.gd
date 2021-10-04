@@ -26,3 +26,8 @@ func start():
 
 func _ready():
 	start()
+
+
+func tgshow():
+	show()
+	$AnimationPlayer.play("HorseCry")

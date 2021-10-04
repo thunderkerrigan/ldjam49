@@ -1,14 +1,13 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scripts/LoseScreen.gd" type="Script" id=3]
-[ext_resource path="res://Assets/Images/fondlose.png" type="Texture" id=4]
 [ext_resource path="res://Assets/Images/Cheval.png" type="Texture" id=5]
 [ext_resource path="res://Assets/Images/Larme.png" type="Texture" id=6]
 [ext_resource path="res://Assets/Images/fondlose (1).png" type="Texture" id=7]
 [ext_resource path="res://Assets/Images/TableHuns.png" type="Texture" id=8]
 [ext_resource path="res://Scripts/AnimationPlayer.gd" type="Script" id=9]
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=1]
 resource_name = "HorseCry"
 length = 1.5
 tracks/0/type = "bezier"
@@ -186,8 +185,6 @@ tracks/16/keys = {
 script = ExtResource( 3 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
-visible = false
-margin_top = -1.05948
 margin_right = 480.0
 margin_bottom = 718.941
 mouse_filter = 2
@@ -195,10 +192,6 @@ color = Color( 0.756863, 0.458824, 0.627451, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="fondlose" type="Sprite" parent="ColorRect"]
-position = Vector2( 772.758, 358.218 )
-texture = ExtResource( 4 )
 
 [node name="Timer" type="Timer" parent="."]
 pause_mode = 2
@@ -230,7 +223,8 @@ scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 6 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/HorseCry = SubResource( 3 )
+anims/HorseCry = SubResource( 1 )
 script = ExtResource( 9 )
 
+[connection signal="draw" from="." to="AnimationPlayer" method="_on_Node2D_draw"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
