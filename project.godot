@@ -57,7 +57,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Hun's table"
-run/main_scene="res://Scenes/MainScene.tscn"
+run/main_scene="res://Scenes/StartScene.tscn"
 config/icon="res://Assets/Images/icon.png"
 
 [display]

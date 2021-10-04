@@ -1,0 +1,179 @@
+[gd_scene load_steps=43 format=2]
+
+[ext_resource path="res://Assets/Images/thanos_background.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Images/fire/fire_105.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Images/fire/fire_103.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Images/fire/fire_104.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Images/fire/fire_117.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Images/fire/fire_120.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Images/fire/fire_113.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Images/fire/fire_108.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Images/fire/fire_121.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Images/fire/fire_130.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Images/fire/fire_124.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Images/fire/fire_131.png" type="Texture" id=12]
+[ext_resource path="res://Assets/Images/fire/fire_127.png" type="Texture" id=13]
+[ext_resource path="res://Assets/Images/atila_head.png" type="Texture" id=14]
+[ext_resource path="res://Assets/Images/fire/fire_110.png" type="Texture" id=15]
+[ext_resource path="res://Assets/Images/fire/fire_111.png" type="Texture" id=16]
+[ext_resource path="res://Assets/Images/fire/fire_114.png" type="Texture" id=17]
+[ext_resource path="res://Assets/Images/fire/fire_100.png" type="Texture" id=18]
+[ext_resource path="res://Assets/Images/fire/fire_118.png" type="Texture" id=19]
+[ext_resource path="res://Assets/Images/fire/fire_119.png" type="Texture" id=20]
+[ext_resource path="res://Assets/Images/fire/fire_122.png" type="Texture" id=21]
+[ext_resource path="res://Assets/Images/fire/fire_123.png" type="Texture" id=22]
+[ext_resource path="res://Assets/Images/fire/fire_129.png" type="Texture" id=23]
+[ext_resource path="res://Assets/Images/fire/fire_115.png" type="Texture" id=24]
+[ext_resource path="res://Assets/Images/fire/fire_128.png" type="Texture" id=25]
+[ext_resource path="res://Assets/Images/fire/fire_116.png" type="Texture" id=26]
+[ext_resource path="res://Assets/Images/fire/fire_102.png" type="Texture" id=27]
+[ext_resource path="res://Assets/Images/fire/fire_101.png" type="Texture" id=28]
+[ext_resource path="res://Assets/Images/fire/fire_107.png" type="Texture" id=29]
+[ext_resource path="res://Assets/Images/fire/fire_109.png" type="Texture" id=30]
+[ext_resource path="res://Assets/Images/fire/fire_106.png" type="Texture" id=31]
+[ext_resource path="res://Assets/Images/fire/fire_126.png" type="Texture" id=32]
+[ext_resource path="res://Assets/Images/fire/fire_112.png" type="Texture" id=33]
+[ext_resource path="res://Assets/Images/fire/fire_125.png" type="Texture" id=34]
+[ext_resource path="res://Scenes/AnimationPlayer.gd" type="Script" id=35]
+[ext_resource path="res://Scenes/StartScene.gd" type="Script" id=36]
+[ext_resource path="res://Assets/Sounds/war-of-the-crown-epic-trailer-music-determination-fantasy-courage-bright-mood-8611.mp3" type="AudioStream" id=37]
+[ext_resource path="res://Scenes/MainScene.tscn" type="PackedScene" id=38]
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 18 ), ExtResource( 28 ), ExtResource( 27 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 2 ), ExtResource( 31 ), ExtResource( 29 ), ExtResource( 8 ), ExtResource( 30 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 33 ), ExtResource( 7 ), ExtResource( 17 ), ExtResource( 24 ), ExtResource( 26 ), ExtResource( 5 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 6 ), ExtResource( 9 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 11 ), ExtResource( 34 ), ExtResource( 32 ), ExtResource( 13 ), ExtResource( 25 ), ExtResource( 23 ), ExtResource( 10 ), ExtResource( 12 ) ],
+"loop": true,
+"name": "default",
+"speed": 25.0
+} ]
+
+[sub_resource type="DynamicFontData" id=5]
+font_path = "res://Assets/Fonts/CrushyourenemiesBook-z48L.ttf"
+
+[sub_resource type="DynamicFont" id=6]
+size = 26
+outline_size = 3
+outline_color = Color( 0, 0, 0, 1 )
+font_data = SubResource( 5 )
+
+[sub_resource type="Animation" id=4]
+resource_name = "New Anim"
+length = 5.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2, 3.5, 5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 240, 208 ), Vector2( 224, 208 ), Vector2( 240, 208 ), Vector2( 240, 208 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2, 3.5, 5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, -15.921, 4.7988, 0.0 ]
+}
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 36 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+Game = ExtResource( 38 )
+
+[node name="fireBackground" type="AnimatedSprite" parent="."]
+position = Vector2( 240, 360 )
+scale = Vector2( 1, 1.5 )
+frames = SubResource( 3 )
+frame = 12
+playing = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -120.0
+margin_top = 16.0
+margin_right = 1004.0
+margin_bottom = 780.0
+rect_scale = Vector2( 0.451584, 0.483974 )
+mouse_filter = 2
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -203.0
+custom_constants/margin_right = 100
+custom_constants/margin_left = 100
+custom_constants/margin_bottom = 50
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+margin_left = 100.0
+margin_right = 380.0
+margin_bottom = 153.0
+custom_constants/separation = 15
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StoryButton" type="Button" parent="MarginContainer/VBoxContainer"]
+margin_right = 280.0
+margin_bottom = 33.0
+custom_fonts/font = SubResource( 6 )
+text = "Story"
+
+[node name="EndlessButton" type="Button" parent="MarginContainer/VBoxContainer"]
+margin_top = 48.0
+margin_right = 280.0
+margin_bottom = 81.0
+custom_fonts/font = SubResource( 6 )
+disabled = true
+text = "Endless"
+clip_text = true
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+margin_top = 96.0
+margin_right = 280.0
+margin_bottom = 123.0
+custom_fonts/font = SubResource( 6 )
+align = 1
+autowrap = true
+
+[node name="atila_head" type="Sprite" parent="."]
+position = Vector2( 226.873, 208 )
+rotation = -0.227985
+scale = Vector2( 0.448553, 0.448553 )
+texture = ExtResource( 14 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="atila_head"]
+"anims/New Anim" = SubResource( 4 )
+script = ExtResource( 35 )
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 37 )
+autoplay = true
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/StoryButton" to="." method="start"]

@@ -1,5 +1,7 @@
 extends Node
 
+signal gameOver
+
 export (Array, PackedScene) var miniGames
 var nextIndex :int = -1
 var currentGame = null
@@ -74,9 +76,9 @@ func didLose():
 		shakeLifePoint()
 	else:
 		if !story_mode:
-			pass #TODO: scoring panel
+			emit_signal("gameOver", 0)
 		else:
-			pass # TODO: bad ending panel
+			emit_signal("gameOver", 0)
 	
 	
 func _on_StartTimer_timeout():
@@ -84,6 +86,7 @@ func _on_StartTimer_timeout():
 	$InfinityLayer/InfinityTable.hide()
 	print_debug('time: ', duration_level)
 	if miniGames.size() == 0:
+		emit_signal("gameOver", 0)
 		return #TODO: winning panel
 	nextIndex = randi() % miniGames.size()
 	var nextGameType = miniGames[nextIndex]
