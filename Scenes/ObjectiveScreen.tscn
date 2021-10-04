@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Assets/Fonts/montserrat/Montserrat-Regular.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://Assets/Fonts/montserrat/Montserrat-Bold.otf" type="DynamicFontData" id=2]
 [ext_resource path="res://Scripts/ObjectiveScreen.gd" type="Script" id=3]
 [ext_resource path="res://Assets/Images/Stomp.png" type="Texture" id=4]
 [ext_resource path="res://Assets/Images/fontOivebject.png" type="Texture" id=5]
+[ext_resource path="res://Scripts/ObjectiveAnimationPlayer.gd" type="Script" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 64
@@ -15,6 +16,60 @@ font_data = ExtResource( 2 )
 size = 64
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "Stomp"
+length = 1.5
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("Stomp:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1, 1.2, 1.4, 1.5 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("Stomp:scale:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 50, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.310458, -0.00700086, 1.05, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0.326077, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1, 1.1, 1.2, 1.5, 2.38 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("Stomp:scale:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 50, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1.05, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1, 1.1, 1.2, 1.5 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("Stomp:position:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( -192.543, -0.25, 0, 0.25, 0, 235.94, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/4/type = "bezier"
+tracks/4/path = NodePath("Stomp:position:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"points": PoolRealArray( 361.417, -0.25, 0, 0.25, 0, 349.403, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 3 )
@@ -30,13 +85,13 @@ __meta__ = {
 }
 
 [node name="fontOivebject" type="Sprite" parent="ColorRect"]
-self_modulate = Color( 1, 1, 1, 0.733333 )
 position = Vector2( 240, 360 )
 texture = ExtResource( 5 )
 
 [node name="Stomp" type="Sprite" parent="."]
-position = Vector2( 239.945, 358.747 )
+position = Vector2( -192.543, 361.417 )
 rotation = 0.30676
+scale = Vector2( 50, 50 )
 texture = ExtResource( 4 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Stomp"]
@@ -54,3 +109,7 @@ __meta__ = {
 }
 
 [node name="Tween" type="Tween" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Stomp = SubResource( 3 )
+script = ExtResource( 6 )

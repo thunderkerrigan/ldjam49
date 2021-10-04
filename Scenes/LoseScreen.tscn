@@ -1,23 +1,192 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://Assets/Fonts/montserrat/Montserrat-Regular.otf" type="DynamicFontData" id=1]
-[ext_resource path="res://Assets/Fonts/montserrat/Montserrat-Bold.otf" type="DynamicFontData" id=2]
 [ext_resource path="res://Scripts/LoseScreen.gd" type="Script" id=3]
 [ext_resource path="res://Assets/Images/fondlose.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Images/Cheval.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Images/Larme.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Images/fondlose (1).png" type="Texture" id=7]
+[ext_resource path="res://Assets/Images/TableHuns.png" type="Texture" id=8]
+[ext_resource path="res://Scripts/AnimationPlayer.gd" type="Script" id=9]
 
-[sub_resource type="DynamicFont" id=1]
-outline_color = Color( 0, 0, 0, 1 )
-font_data = ExtResource( 2 )
-
-[sub_resource type="DynamicFont" id=2]
-size = 44
-outline_color = Color( 0, 0, 0, 1 )
-font_data = ExtResource( 1 )
+[sub_resource type="Animation" id=3]
+resource_name = "HorseCry"
+length = 1.5
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("Cheval:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 652.475, -0.25, 0, 0.25, 0, 240, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.3 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("Cheval:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 360.84, -0.25, 0, 0.25, 0, 360, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.3 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("Cheval/Larme:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 19.1755, -0.25, 0, 0.25, 0, 19.1755, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0.4, 1.5 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("Cheval/Larme:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 172.46, -0.25, 0, 0.25, 0, 352.625, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0.4, 1.5 )
+}
+tracks/4/type = "bezier"
+tracks/4/path = NodePath("Cheval/Larme:modulate:r")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.3, 0.4 )
+}
+tracks/5/type = "bezier"
+tracks/5/path = NodePath("Cheval/Larme:modulate:g")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.3, 0.4 )
+}
+tracks/6/type = "bezier"
+tracks/6/path = NodePath("Cheval/Larme:modulate:b")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.3, 0.4 )
+}
+tracks/7/type = "bezier"
+tracks/7/path = NodePath("Cheval/Larme:modulate:a")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.3, 0.4 )
+}
+tracks/8/type = "bezier"
+tracks/8/path = NodePath("Cheval/Larme2:position:x")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"points": PoolRealArray( -2.08984, -0.25, 0, 0.25, 0, -2.08984, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0.7, 1.5 )
+}
+tracks/9/type = "bezier"
+tracks/9/path = NodePath("Cheval/Larme2:position:y")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"points": PoolRealArray( 173.6, -0.25, 0, 0.25, 0, 297.872, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0.7, 1.5 )
+}
+tracks/10/type = "bezier"
+tracks/10/path = NodePath("Cheval/Larme2:modulate:r")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0.7, 0.8 )
+}
+tracks/11/type = "bezier"
+tracks/11/path = NodePath("Cheval/Larme2:modulate:g")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0.7, 0.8 )
+}
+tracks/12/type = "bezier"
+tracks/12/path = NodePath("Cheval/Larme2:modulate:b")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0.7, 0.8 )
+}
+tracks/13/type = "bezier"
+tracks/13/path = NodePath("Cheval/Larme2:modulate:a")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0.7, 0.8 )
+}
+tracks/14/type = "bezier"
+tracks/14/path = NodePath("TableHuns:position:x")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"points": PoolRealArray( 556.563, -0.25, 0, 0.25, 0, -78.0557, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1.5 )
+}
+tracks/15/type = "bezier"
+tracks/15/path = NodePath("TableHuns:position:y")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"points": PoolRealArray( 642.26, -0.25, 0, 0.25, 0, -76.0556, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1.5 )
+}
+tracks/16/type = "bezier"
+tracks/16/path = NodePath("TableHuns:rotation_degrees")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 360, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1.5 )
+}
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 3 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 margin_top = -1.05948
 margin_right = 480.0
 margin_bottom = 718.941
@@ -28,25 +197,40 @@ __meta__ = {
 }
 
 [node name="fondlose" type="Sprite" parent="ColorRect"]
-position = Vector2( 240, 360 )
+position = Vector2( 772.758, 358.218 )
 texture = ExtResource( 4 )
-
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
-margin_left = 26.6511
-margin_top = 164.065
-margin_right = 448.651
-margin_bottom = 228.065
-custom_fonts/mono_font = SubResource( 1 )
-custom_fonts/normal_font = SubResource( 2 )
-custom_colors/default_color = Color( 0, 0, 0, 1 )
-text = "Nooooooooooooo!"
-scroll_active = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Timer" type="Timer" parent="."]
 pause_mode = 2
 one_shot = true
+
+[node name="fondlose (1)" type="Sprite" parent="."]
+position = Vector2( 240, 360 )
+texture = ExtResource( 7 )
+
+[node name="TableHuns" type="Sprite" parent="."]
+position = Vector2( 556.563, 642.26 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 8 )
+
+[node name="Cheval" type="Sprite" parent="."]
+position = Vector2( 652.475, 360.84 )
+texture = ExtResource( 5 )
+
+[node name="Larme" type="Sprite" parent="Cheval"]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 19.1755, 172.46 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 6 )
+
+[node name="Larme2" type="Sprite" parent="Cheval"]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( -2.08984, 173.6 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 6 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/HorseCry = SubResource( 3 )
+script = ExtResource( 9 )
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

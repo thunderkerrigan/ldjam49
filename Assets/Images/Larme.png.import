@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/periodic table.png-ca02f5d4b65e5428325179525bd97cfe.stex"
+path="res://.import/Larme.png-f0c824c3c3fa0e59a3768c2962789008.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/portrait/periodic table.png"
-dest_files=[ "res://.import/periodic table.png-ca02f5d4b65e5428325179525bd97cfe.stex" ]
+source_file="res://Assets/Images/Larme.png"
+dest_files=[ "res://.import/Larme.png-f0c824c3c3fa0e59a3768c2962789008.stex" ]
 
 [params]
 

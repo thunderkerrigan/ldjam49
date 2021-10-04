@@ -1,7 +1,7 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
-[ext_resource path="res://Scripts/TableTampon.vs" type="Script" id=1]
-[ext_resource path="res://Scripts/TimerPrint.vs" type="Script" id=2]
+[ext_resource path="res://Scripts/MendeleevTable.vs" type="Script" id=1]
+[ext_resource path="res://Scenes/ClickablePeriodci.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scripts/Countdown.gd" type="Script" id=3]
 [ext_resource path="res://Scenes/ClickableMendeleev.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/LoseScreen.tscn" type="PackedScene" id=5]
@@ -18,11 +18,15 @@
 size = 34
 font_data = ExtResource( 10 )
 
-[sub_resource type="StyleBoxEmpty" id=2]
+[sub_resource type="DynamicFont" id=2]
+size = 34
+font_data = ExtResource( 10 )
 
 [sub_resource type="StyleBoxEmpty" id=3]
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="StyleBoxEmpty" id=4]
+
+[sub_resource type="DynamicFont" id=5]
 size = 44
 outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
@@ -43,31 +47,31 @@ __meta__ = {
 }
 
 [node name="FondMendeleev" type="Sprite" parent="ColorRect"]
-modulate = Color( 1, 1, 1, 0.54902 )
 position = Vector2( 239.648, 360.747 )
 texture = ExtResource( 12 )
 
 [node name="FondMendeleev1" type="Sprite" parent="ColorRect"]
-self_modulate = Color( 1, 1, 1, 0.27451 )
-position = Vector2( 240, 360 )
+self_modulate = Color( 1, 1, 1, 0.784314 )
+position = Vector2( 389.287, 700.667 )
+scale = Vector2( 0.424738, 0.424738 )
 texture = ExtResource( 13 )
 
 [node name="Timer" type="Node" parent="."]
 
 [node name="Timer" type="Timer" parent="Timer"]
-wait_time = 5.0
+wait_time = 3.0
 one_shot = true
-autostart = true
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
-margin_left = 65.6428
-margin_top = 526.776
-margin_right = 435.643
-margin_bottom = 581.776
+visible = false
+margin_left = 58.9078
+margin_top = 566.062
+margin_right = 428.908
+margin_bottom = 621.062
 rect_clip_content = false
 custom_fonts/normal_font = SubResource( 1 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
-text = "Whose is that Table ?"
+text = "THAT IS MA TABLE !"
 fit_content_height = true
 scroll_active = false
 __meta__ = {
@@ -76,6 +80,7 @@ __meta__ = {
 }
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="."]
+visible = false
 margin_left = 52.23
 margin_top = 185.827
 margin_right = 435.23
@@ -101,7 +106,6 @@ __meta__ = {
 seconds = 5
 
 [node name="CountdownTimer" type="Timer" parent="Countdown"]
-process_mode = 0
 autostart = true
 
 [node name="Label" type="Label" parent="Countdown"]
@@ -109,26 +113,27 @@ margin_left = 97.0
 margin_top = 601.0
 margin_right = 381.0
 margin_bottom = 707.0
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 1, 0.00784314, 0.00784314, 1 )
 text = "Timer"
 align = 1
 valign = 1
-script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false,
 "_editor_description_": ""
 }
 
 [node name="Button" type="Button" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 130.285
 margin_top = 103.713
 margin_right = 326.285
 margin_bottom = 177.713
-custom_styles/hover = SubResource( 2 )
-custom_styles/normal = SubResource( 3 )
-custom_fonts/font = SubResource( 4 )
+custom_styles/hover = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "PERIODIC"
 __meta__ = {
@@ -136,16 +141,20 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="WinScreen" parent="." instance=ExtResource( 9 )]
-
 [node name="Clickable" parent="." instance=ExtResource( 4 )]
+position = Vector2( 2.06647, 32.5515 )
+
+[node name="ClickablePeriodic" parent="." instance=ExtResource( 2 )]
+position = Vector2( 9.82627, -15.3644 )
+
+[node name="Stamp_Cursor" parent="." instance=ExtResource( 7 )]
+
+[node name="WinScreen" parent="." instance=ExtResource( 9 )]
 visible = false
-position = Vector2( 0.943909, 0 )
+script = null
 
 [node name="Hun Tampon" parent="." instance=ExtResource( 6 )]
 visible = false
-
-[node name="Stamp_Cursor" parent="." instance=ExtResource( 7 )]
 
 [node name="LoseScreen" parent="." instance=ExtResource( 5 )]
 visible = false
@@ -156,5 +165,8 @@ visible = false
 [connection signal="timeout" from="Countdown/CountdownTimer" to="Countdown" method="_on_CountdownTimer_timeout"]
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="Button" to="Hun Tampon" method="_on_Button_pressed"]
-[connection signal="visibility_changed" from="WinScreen" to="." method="_on_WinScreen_visibility_changed"]
 [connection signal="mendeleevClicked" from="Clickable" to="." method="_on_Clickable_mendeleevClicked"]
+[connection signal="periodicClicked" from="ClickablePeriodic" to="." method="_on_ClickablePeriodic_periodicClicked"]
+[connection signal="periodicClicked" from="ClickablePeriodic" to="Hun Tampon" method="_on_ClickablePeriodic_periodicClicked"]
+[connection signal="visibility_changed" from="WinScreen" to="." method="_on_WinScreen_visibility_changed"]
+[connection signal="ended" from="ObjectiveScreen" to="." method="_on_ObjectiveScreen_ended"]
