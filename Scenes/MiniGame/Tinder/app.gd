@@ -8,12 +8,17 @@ export var match_scene: PackedScene = preload("res://Scenes/MiniGame/Tinder/matc
 export var soundClip: PackedScene = preload("res://Scenes/SoundEffect.tscn")
 export (Array, AudioStream) var kissSounds
 
+var game_duration: float = 3
+var game_difficulty: int = 0
+
+func set_difficulty(duration, level):
+	game_duration = duration
+	game_difficulty =  level
 
 var next_card = null
 var successCount = 3
 func _ready():
-	$MiniGameCountdownTimer/Control/CountdownTimer.stop()
-	$MiniGameCountdownTimer/Control/DropAnimationPlayer.stop()
+		$MiniGameCountdownTimer.reset()
 
 func _on_Card_moving():
 	if $CardContainer.get_child_count() != 1: return
@@ -82,5 +87,7 @@ func _on_MiniGameCountdownTimer_countownElapsed():
 func _on_swipe_objective_ended():
 	randomize()
 	$MusicPlayer.play()
-	$MiniGameCountdownTimer.start(3)
+	$MiniGameCountdownTimer.start(game_duration)
 	$CardContainer/Card.enabled = true
+	successCount += floor(game_difficulty/2) +(game_difficulty %2)
+	print_debug('success count: ', successCount)

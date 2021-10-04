@@ -9,11 +9,20 @@ var goodEnding = preload("res://Scenes/MiniGame/Chimie/good_ending.tscn")
 # var a = 2
 # var b = "text"
 
+var game_duration: float = 3
+var game_difficulty: int = 0
+
+func set_difficulty(duration, level):
+	game_duration = duration
+	game_difficulty =  level
+
+var increment_by = 20
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$MiniGameCountdownTimer/Control/CountdownTimer.stop()
-	$MiniGameCountdownTimer/Control/DropAnimationPlayer.stop()
+	$MiniGameCountdownTimer.reset()
+
+
 
 func change_pipette_position():
 	$PipettePath2D/PathFollow2D.offset = randi()
@@ -23,7 +32,7 @@ func change_pipette_position():
 	$Pipettes.rotation = direction
 	
 func _on_Pipettes_touched():
-	$ErlenMeyer/Control/ErlenmeyerProgress.value += 20
+	$ErlenMeyer/Control/ErlenmeyerProgress.value += increment_by
 	change_pipette_position()
 	if $ErlenMeyer/Control/ErlenmeyerProgress.value == 100:
 		victory()
@@ -42,9 +51,13 @@ func _on_MiniGameCountdownTimer_countownElapsed():
 	emit_signal('lose')
 	$Music.stop()	
 
+func change_difficulty():
+	increment_by = 20 - (game_difficulty * 2)
+ 
 
 func _on_Node2D_ended():
-	$MiniGameCountdownTimer.start(3)
+	$MiniGameCountdownTimer.start(game_duration)
 	$ErlenMeyer/AnimationPlayer.play("shake")
 	change_pipette_position()
 	$Music.play()
+	change_difficulty()

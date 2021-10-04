@@ -2,7 +2,7 @@ extends Area2D
 
 signal hit
 
-export var speed = 400
+export var speed = 250
 var screen_size
 # Add this variable to hold the clicked position.
 var target = Vector2()

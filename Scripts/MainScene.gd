@@ -1,6 +1,7 @@
 extends Node
 
 export (Array, PackedScene) var miniGames
+var nextIndex :int = -1
 var currentGame = null
 
 # Declare member variables here. Examples:
@@ -9,59 +10,87 @@ var currentGame = null
 var life = 3
 var victoryCount = 0
 
+var story_mode = true
+
+var difficulty_level = 0
+var duration_level = 4
+
+var alreadyPickGames = []
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$StartTimer.start()
 	$Interlude.show()
+	if story_mode:
+		$InfinityLayer/InfinityTable.show()
+		$InfinityTween.interpolate_property($InfinityLayer/InfinityTable, 'rect_scale', Vector2(1.1,1.1), Vector2.ONE, 0.4,Tween.TRANS_ELASTIC & Tween.TRANS_BACK, Tween.EASE_IN_OUT)		
+		$InfinityTween.start()
+	else:
+		$InfinityLayer/InfinityTable.hide()
+		
 	
 	
-
 func start_game():
 	life = 3 
 	victoryCount = 0	
 	$StartTimer.start()
-	
 
+func shakeLifePoint():
+	$RemainingLifeTween.interpolate_property($Interlude/Control/HeartBoxContainer2, "rect_scale",
+		Vector2(2.5, 2.5), Vector2.ONE, 0.4, Tween.TRANS_BOUNCE, Tween.EASE_OUT)
+	$RemainingLifeTween.start()
 
-
-func _on_MinusButton_pressed():
-	if life > 0:
-		life -= 1
-		print_debug('_on_MinusButton_pressed', life)
-		$Interlude/Control/HeartBoxContainer2.update_health(life)
-
-func _on_PlusButton_pressed():
-	if life < 3:
-		life += 1
-		print_debug('_on_PlusButton_pressed', life)
-		$Interlude/Control/HeartBoxContainer2.update_health(life)
-
-func didWin():
+func resetInterlude():
 	$Interlude.show()
-	$VictoryOrDefeatSoundEffect.play_victory()	
+	$InfinityLayer/InfinityTable.show()	
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	print_debug('tes un génie rancune')
 	$StartTimer.start()
-
-func didLose():
-	$Interlude.show()
-	$VictoryOrDefeatSoundEffect.play_defeat()
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)	
-	if life > 0:
-		life -= 1
-		$Interlude/Control/HeartBoxContainer2.update_health(life)
-	$StartTimer.start()
-
-func _on_StartTimer_timeout():
-	$Interlude.hide()
-	print_debug('FIRE!!!')
 	if currentGame != null:
 		currentGame.disconnect('win', self, 'didWin')
 		currentGame.disconnect('lose', self, 'didLose')
-		currentGame.free()
-	var nextGameType = miniGames[randi() % miniGames.size()]
+		currentGame.queue_free()
+
+func didWin():
+	resetInterlude()
+	
+	$VictoryOrDefeatSoundEffect.play_victory()	
+	victoryCount +=1
+	$InfinityLayer/InfinityTable.showNumber = victoryCount
+	$InfinityLayer/InfinityTable.tryShowInfinity()
+	if !story_mode:
+		difficulty_level = max(floor(victoryCount / 3),5)
+		duration_level = max(duration_level -0.1* difficulty_level, 3)
+	else:
+		miniGames.remove(nextIndex)
+		
+	
+
+func didLose():
+	resetInterlude()
+	$VictoryOrDefeatSoundEffect.play_defeat()
+	if life > 1: # still enough heart
+		life -= 1
+		$Interlude/Control/HeartBoxContainer2.update_health(life)
+		shakeLifePoint()
+	else:
+		if !story_mode:
+			pass #TODO: scoring panel
+		else:
+			pass # TODO: bad ending panel
+	
+	
+func _on_StartTimer_timeout():
+	$Interlude.hide()
+	$InfinityLayer/InfinityTable.hide()
+	print_debug('time: ', duration_level)
+	if miniGames.size() == 0:
+		return #TODO: winning panel
+	nextIndex = randi() % miniGames.size()
+	var nextGameType = miniGames[nextIndex]
 	var nextGame = nextGameType.instance()
 	add_child(nextGame)
 	currentGame = nextGame
 	currentGame.connect('win', self, 'didWin')
 	currentGame.connect('lose', self, 'didLose')
+	if currentGame.has_method('set_difficulty'):
+		currentGame.set_difficulty(duration_level, difficulty_level)

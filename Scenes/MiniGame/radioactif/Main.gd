@@ -4,13 +4,20 @@ export (PackedScene) var Mob
 signal lose
 signal win
 
+var game_duration: float = 3
+var game_difficulty: int = 0
+
+func set_difficulty(duration, level):
+	game_duration = duration
+	game_difficulty =  level
+
+
 var match_scene = preload("res://Scenes/MiniGame/radioactif/win_nuclear.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	randomize()
-	$MiniGameCountdownTimer/Control/CountdownTimer.stop()
-	$MiniGameCountdownTimer/Control/DropAnimationPlayer.stop()
+	$MiniGameCountdownTimer.reset()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
@@ -37,6 +44,7 @@ func new_game():
 	$EndTimer.start()
 	$Music.play()
 	$MobTimer.start()
+	$Player.speed *= (1+game_difficulty)
 
 
 func _on_EndTimer_timeout():
@@ -58,10 +66,13 @@ func _on_MobTimer_timeout():
 	direction += rand_range(-PI / 4, PI / 4)
 	mob.rotation = direction
 	# Set the velocity (speed & direction).
+	mob.min_speed *= (1+game_difficulty)
+	mob.max_speed *= (1+game_difficulty)
+
 	mob.linear_velocity = Vector2(rand_range(mob.min_speed, mob.max_speed), 0)
 	mob.linear_velocity = mob.linear_velocity.rotated(direction)
 
 
 func _on_Node2D_ended():
+	$MiniGameCountdownTimer.start(game_duration)
 	new_game()
-	$MiniGameCountdownTimer.start(3)

@@ -11,6 +11,10 @@ signal countownElapsed
 func _ready():
 	start(3)
 
+func reset():
+	$Control/DropAnimationPlayer.stop()
+	$Control/CountdownTimer.stop()
+
 func start(time):
 	$Control/DropAnimationPlayer.stop()	
 	$Control/CountdownTimer.start(time)
@@ -21,7 +25,7 @@ func start(time):
 	else:
 		$Control/little_boy.show()
 		$Control/fat_man.hide()
-	$Control/DropAnimationPlayer.play("Drop")
+	$Control/DropAnimationPlayer.play("Drop",-1, 3/time)
 
 func stop():
 	$Control/CountdownTimer.stop()
