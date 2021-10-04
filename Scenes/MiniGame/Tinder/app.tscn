@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Assets/Images/Circle-icons-flame.svg.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/MiniGame/Tinder/card.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Assets/Sounds/cartoon-kiss_cjohnstonewav-6381.mp3" type="AudioStream" id=6]
 [ext_resource path="res://Assets/Sounds/kissing-6174.mp3" type="AudioStream" id=7]
 [ext_resource path="res://Scenes/MiniGame/Chimie/MiniGameCountdownTimer.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/Flames.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Scenes/MiniGame/Tinder/app.gd" type="Script" id=11]
 
 [sub_resource type="Gradient" id=1]
@@ -24,10 +25,15 @@ colors = PoolColorArray( 1, 1, 1, 1 )
 [sub_resource type="GradientTexture" id=4]
 gradient = SubResource( 3 )
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="Shader" id=5]
+
+[sub_resource type="ShaderMaterial" id=6]
+shader = SubResource( 5 )
+
+[sub_resource type="DynamicFont" id=7]
 size = 48
 outline_size = 4
-outline_color = Color( 0.776471, 0.360784, 0.360784, 1 )
+outline_color = Color( 0.815686, 0.239216, 0.239216, 1 )
 font_data = ExtResource( 3 )
 
 [node name="App" type="Control"]
@@ -67,7 +73,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Flames" parent="TopContainer" instance=ExtResource( 9 )]
+position = Vector2( 136, 40 )
+scale = Vector2( 0.06, 0.06 )
+
 [node name="Circle-icons-flamesvg" type="Sprite" parent="TopContainer"]
+visible = false
 position = Vector2( 128, 40 )
 scale = Vector2( 0.08, 0.08 )
 texture = ExtResource( 1 )
@@ -78,13 +89,19 @@ margin_bottom = 193.0
 alignment = 1
 
 [node name="Title" type="Label" parent="TopContainer/HBoxContainer"]
-margin_left = 178.0
-margin_right = 301.0
+material = SubResource( 6 )
+margin_left = 176.0
+margin_right = 299.0
 margin_bottom = 193.0
-custom_fonts/font = SubResource( 5 )
-custom_colors/font_color = Color( 0.92549, 0.815686, 0.435294, 1 )
+custom_fonts/font = SubResource( 7 )
+custom_colors/font_color = Color( 0.92549, 0.721569, 0.435294, 1 )
 text = "Cinder
 "
+
+[node name="TextureRect" type="TextureRect" parent="TopContainer/HBoxContainer"]
+margin_left = 303.0
+margin_right = 303.0
+margin_bottom = 193.0
 
 [node name="CardContainer" type="MarginContainer" parent="."]
 anchor_top = 1.0

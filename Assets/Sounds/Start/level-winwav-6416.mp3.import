@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/level-winwav-6416.mp3-72c17ecbbb4400984c6a003d11989c45.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sounds/Start/level-winwav-6416.mp3"
+dest_files=[ "res://.import/level-winwav-6416.mp3-72c17ecbbb4400984c6a003d11989c45.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

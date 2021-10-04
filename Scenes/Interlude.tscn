@@ -51,6 +51,7 @@ __meta__ = {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Control"]
 position = Vector2( 224, 400 )
 frames = SubResource( 1 )
+frame = 5
 playing = true
 
 [node name="HeartBoxContainer2" type="HBoxContainer" parent="Control" groups=[

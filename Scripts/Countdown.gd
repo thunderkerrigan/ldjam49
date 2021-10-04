@@ -21,5 +21,9 @@ func _physics_process(delta):
 
 
 func _on_CountdownTimer_timeout():
-	seconds -= 1
+	if seconds >= 1:
+		seconds -= 1
+	else:
+		seconds = 0
+		
 	
