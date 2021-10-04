@@ -67,7 +67,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 5.3, 5.7, 10.2, 10.5, 18, 18.3, 22.3 ),
+"times": PoolRealArray( 0, 2.2, 2.5, 5.9, 6.2, 8.8, 9.1, 11.3 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( -15.119, 0 ), Vector2( -15.119, 0 ), Vector2( -626.276, 0 ), Vector2( -626.276, 0 ), Vector2( -16.9012, -561.266 ), Vector2( -16.9012, -561.266 ), Vector2( -627.152, -558.088 ), Vector2( -627.152, -558.088 ) ]
@@ -79,7 +79,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 10.8, 14.6, 15.8, 16.8 ),
+"times": PoolRealArray( 6.2, 6.6, 7.8, 8.8 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ 92.2152, 92.2152, -49.8936, -49.8936 ]
@@ -91,10 +91,10 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 15.6, 15.8, 16.8 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 6.2, 7.2, 7.8, 8.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 249.455, 977.562 ), Vector2( 310.266, 1179.79 ), Vector2( 310.266, 1179.79 ) ]
+"values": [ Vector2( 249.455, 977.562 ), Vector2( 249.455, 977.562 ), Vector2( 310.266, 1179.79 ), Vector2( 310.266, 1179.79 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("Panel/TableHuns:self_modulate")
@@ -103,7 +103,7 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 5.7 ),
+"times": PoolRealArray( 2.6 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ) ]
@@ -113,9 +113,9 @@ tracks/4/path = NodePath("Panel/TableHuns:modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
-tracks/4/enabled = false
+tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 5.7, 6.3, 6.8, 7.3, 7.9, 8.4 ),
+"times": PoolRealArray( 2.6, 3.2, 3.7, 4.2, 4.8, 5.3 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
@@ -124,9 +124,10 @@ tracks/4/keys = {
 [node name="Node2D" type="Node2D"]
 
 [node name="Panel" type="Panel" parent="."]
-margin_left = -626.276
-margin_right = 552.724
-margin_bottom = 1598.0
+margin_left = -627.152
+margin_top = -558.088
+margin_right = 551.848
+margin_bottom = 1039.91
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -172,15 +173,17 @@ playing = false
 [node name="Stamp2" parent="Panel" instance=ExtResource( 3 )]
 position = Vector2( 978.658, 1028.11 )
 scale = Vector2( 1.5, 1.5 )
+script = null
 
 [node name="Stamp" parent="Panel" instance=ExtResource( 3 )]
 material = SubResource( 2 )
 position = Vector2( 310.266, 1179.79 )
 scale = Vector2( 1.5, 1.5 )
+script = null
 
 [node name="Hand" type="Sprite" parent="Panel"]
 position = Vector2( 493.421, 1059.17 )
-rotation = -0.870807
+rotation = -0.870808
 scale = Vector2( 0.595775, 0.595775 )
 texture = ExtResource( 8 )
 centered = false
@@ -210,3 +213,29 @@ texture = ExtResource( 9 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/BDAnimation = SubResource( 3 )
 script = ExtResource( 10 )
+
+[node name="Panel2" type="Panel" parent="."]
+margin_left = -680.0
+margin_right = 1167.0
+margin_bottom = 224.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel2" type="Panel" parent="Panel2"]
+margin_left = 3.0
+margin_top = 503.0
+margin_right = 1186.0
+margin_bottom = 790.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel2" type="Panel" parent="Panel2/Panel2"]
+margin_left = 6.1748
+margin_top = 546.398
+margin_right = 1189.17
+margin_bottom = 809.398
+__meta__ = {
+"_edit_use_anchors_": false
+}
