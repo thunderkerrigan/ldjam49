@@ -2,9 +2,11 @@ extends Node
 
 signal gameOver
 
-export (Array, PackedScene) var miniGames
+export (Array, PackedScene) var MiniGames
 var nextIndex :int = -1
 var currentGame = null
+
+var gamesForCurrentLoop = []
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -17,10 +19,10 @@ var story_mode = true
 var difficulty_level = 0
 var duration_level = 4
 
-var alreadyPickGames = []
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	print_debug('_ready')
+	gamesForCurrentLoop = MiniGames.duplicate()
 	$StartTimer.start()
 	$Interlude.show()
 	if story_mode:
@@ -60,10 +62,10 @@ func didWin():
 	$InfinityLayer/InfinityTable.showNumber = victoryCount
 	$InfinityLayer/InfinityTable.tryShowInfinity()
 	if !story_mode:
-		difficulty_level = max(floor(victoryCount / 3),5)
+		difficulty_level = min(floor(victoryCount / 3),5)
 		duration_level = max(duration_level -0.1* difficulty_level, 3)
 	else:
-		miniGames.remove(nextIndex)
+		gamesForCurrentLoop.remove(nextIndex)
 		
 	
 
@@ -76,7 +78,7 @@ func didLose():
 		shakeLifePoint()
 	else:
 		if !story_mode:
-			emit_signal("gameOver", 0)
+			emit_signal("gameOver", victoryCount * 100000)
 		else:
 			emit_signal("gameOver", 0)
 	
@@ -85,11 +87,12 @@ func _on_StartTimer_timeout():
 	$Interlude.hide()
 	$InfinityLayer/InfinityTable.hide()
 	print_debug('time: ', duration_level)
-	if miniGames.size() == 0:
+	if gamesForCurrentLoop.size() == 0:
+		print_debug('NO MORE GAME!')
 		emit_signal("gameOver", 0)
 		return #TODO: winning panel
-	nextIndex = randi() % miniGames.size()
-	var nextGameType = miniGames[nextIndex]
+	nextIndex = randi() % gamesForCurrentLoop.size()
+	var nextGameType = gamesForCurrentLoop[nextIndex]
 	var nextGame = nextGameType.instance()
 	add_child(nextGame)
 	currentGame = nextGame

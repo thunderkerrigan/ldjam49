@@ -25,7 +25,7 @@ func start(time):
 	else:
 		$Control/little_boy.show()
 		$Control/fat_man.hide()
-	$Control/DropAnimationPlayer.play("Drop",-1, 3/time)
+	$Control/DropAnimationPlayer.play("Drop",-1, 3.0/time)
 
 func stop():
 	$Control/CountdownTimer.stop()

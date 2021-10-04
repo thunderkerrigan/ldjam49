@@ -39,7 +39,7 @@
 [ext_resource path="res://Assets/Sounds/war-of-the-crown-epic-trailer-music-determination-fantasy-courage-bright-mood-8611.mp3" type="AudioStream" id=37]
 [ext_resource path="res://Scenes/MainScene.tscn" type="PackedScene" id=38]
 
-[sub_resource type="SpriteFrames" id=3]
+[sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 18 ), ExtResource( 28 ), ExtResource( 27 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 2 ), ExtResource( 31 ), ExtResource( 29 ), ExtResource( 8 ), ExtResource( 30 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 33 ), ExtResource( 7 ), ExtResource( 17 ), ExtResource( 24 ), ExtResource( 26 ), ExtResource( 5 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 6 ), ExtResource( 9 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 11 ), ExtResource( 34 ), ExtResource( 32 ), ExtResource( 13 ), ExtResource( 25 ), ExtResource( 23 ), ExtResource( 10 ), ExtResource( 12 ) ],
 "loop": true,
@@ -47,14 +47,14 @@ animations = [ {
 "speed": 25.0
 } ]
 
-[sub_resource type="DynamicFontData" id=5]
+[sub_resource type="DynamicFontData" id=2]
 font_path = "res://Assets/Fonts/CrushyourenemiesBook-z48L.ttf"
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=3]
 size = 26
 outline_size = 3
 outline_color = Color( 0, 0, 0, 1 )
-font_data = SubResource( 5 )
+font_data = SubResource( 2 )
 
 [sub_resource type="Animation" id=4]
 resource_name = "New Anim"
@@ -98,8 +98,8 @@ Game = ExtResource( 38 )
 [node name="fireBackground" type="AnimatedSprite" parent="."]
 position = Vector2( 240, 360 )
 scale = Vector2( 1, 1.5 )
-frames = SubResource( 3 )
-frame = 10
+frames = SubResource( 1 )
+frame = 17
 playing = true
 
 [node name="TextureRect" type="TextureRect" parent="."]
@@ -140,14 +140,14 @@ __meta__ = {
 [node name="StoryButton" type="Button" parent="MarginContainer/VBoxContainer"]
 margin_right = 280.0
 margin_bottom = 33.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 3 )
 text = "Story"
 
 [node name="EndlessButton" type="Button" parent="MarginContainer/VBoxContainer"]
 margin_top = 48.0
 margin_right = 280.0
 margin_bottom = 81.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 3 )
 disabled = true
 text = "Endless"
 clip_text = true
@@ -156,13 +156,13 @@ clip_text = true
 margin_top = 96.0
 margin_right = 280.0
 margin_bottom = 123.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 3 )
 align = 1
 autowrap = true
 
 [node name="atila_head" type="Sprite" parent="."]
 position = Vector2( 240, 208 )
-rotation = 0.0116198
+rotation = 0.0577468
 scale = Vector2( 0.448553, 0.448553 )
 texture = ExtResource( 14 )
 
@@ -176,4 +176,5 @@ script = ExtResource( 35 )
 stream = ExtResource( 37 )
 autoplay = true
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/StoryButton" to="." method="start"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/StoryButton" to="." method="story"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/EndlessButton" to="." method="endless"]

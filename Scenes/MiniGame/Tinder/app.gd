@@ -87,7 +87,7 @@ func _on_MiniGameCountdownTimer_countownElapsed():
 func _on_swipe_objective_ended():
 	randomize()
 	$MusicPlayer.play()
-	$MiniGameCountdownTimer.start(game_duration)
+	$MiniGameCountdownTimer.start(4)
 	$CardContainer/Card.enabled = true
 	successCount += floor(game_difficulty/2) +(game_difficulty %2)
 	print_debug('success count: ', successCount)

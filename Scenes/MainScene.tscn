@@ -12,7 +12,7 @@
 
 [node name="MainScene" type="Node"]
 script = ExtResource( 1 )
-miniGames = [ ExtResource( 7 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 8 ), ExtResource( 10 ) ]
+MiniGames = [ ExtResource( 7 ), ExtResource( 5 ), ExtResource( 10 ), ExtResource( 6 ), ExtResource( 8 ) ]
 
 [node name="Interlude" parent="." instance=ExtResource( 2 )]
 

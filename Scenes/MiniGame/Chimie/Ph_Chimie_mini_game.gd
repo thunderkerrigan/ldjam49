@@ -56,7 +56,7 @@ func change_difficulty():
  
 
 func _on_Node2D_ended():
-	$MiniGameCountdownTimer.start(game_duration)
+	$MiniGameCountdownTimer.start(3)
 	$ErlenMeyer/AnimationPlayer.play("shake")
 	change_pipette_position()
 	$Music.play()

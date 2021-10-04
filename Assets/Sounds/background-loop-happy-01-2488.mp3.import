@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/background-loop-happy-01-2488.mp3-94f7b14b6d75af1255337c12eacf1dc1.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sounds/background-loop-happy-01-2488.mp3"
+dest_files=[ "res://.import/background-loop-happy-01-2488.mp3-94f7b14b6d75af1255337c12eacf1dc1.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

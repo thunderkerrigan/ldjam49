@@ -5,7 +5,7 @@ export (PackedScene) var Game
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-var highScore = 'highScore: 0'
+var highScore = 0
 var _game
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -19,15 +19,26 @@ func _ready():
 
 func gameOver(score = 0):
 	_game.disconnect('gameOver', self, 'gameOver')
+	remove_child(_game)
 	_game.queue_free()
 	$Music.play()	
 	$MarginContainer/VBoxContainer/EndlessButton.disabled = false
-	if score > 0:
+	if score > highScore:
+		highScore = score
+	if highScore > 0:
+		$MarginContainer/VBoxContainer/Label.text = str('highScore: ', highScore)
 		$MarginContainer/VBoxContainer/Label.show()	
 
 
-func start():
+func start(storyMode = true):
 	_game = Game.instance()
 	$Music.stop()
 	add_child(_game)
+	_game.story_mode = storyMode
 	_game.connect('gameOver', self, 'gameOver')
+
+func endless():
+	start(false)
+
+func story():
+	start(true)
