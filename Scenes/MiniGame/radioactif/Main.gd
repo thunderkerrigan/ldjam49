@@ -9,8 +9,8 @@ var match_scene = preload("res://Scenes/MiniGame/radioactif/win_nuclear.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	randomize()
-	new_game()
-	
+	$MiniGameCountdownTimer/Control/CountdownTimer.stop()
+	$MiniGameCountdownTimer/Control/DropAnimationPlayer.stop()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
@@ -60,3 +60,8 @@ func _on_MobTimer_timeout():
 	# Set the velocity (speed & direction).
 	mob.linear_velocity = Vector2(rand_range(mob.min_speed, mob.max_speed), 0)
 	mob.linear_velocity = mob.linear_velocity.rotated(direction)
+
+
+func _on_Node2D_ended():
+	new_game()
+	$MiniGameCountdownTimer.start(3)

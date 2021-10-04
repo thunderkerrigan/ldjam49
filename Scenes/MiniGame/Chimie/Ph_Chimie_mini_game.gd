@@ -12,9 +12,8 @@ var goodEnding = preload("res://Scenes/MiniGame/Chimie/good_ending.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$ErlenMeyer/AnimationPlayer.play("shake")
-	change_pipette_position()
-	$Music.play()
+	$MiniGameCountdownTimer/Control/CountdownTimer.stop()
+	$MiniGameCountdownTimer/Control/DropAnimationPlayer.stop()
 
 func change_pipette_position():
 	$PipettePath2D/PathFollow2D.offset = randi()
@@ -42,3 +41,10 @@ func victory():
 func _on_MiniGameCountdownTimer_countownElapsed():
 	emit_signal('lose')
 	$Music.stop()	
+
+
+func _on_Node2D_ended():
+	$MiniGameCountdownTimer.start(3)
+	$ErlenMeyer/AnimationPlayer.play("shake")
+	change_pipette_position()
+	$Music.play()

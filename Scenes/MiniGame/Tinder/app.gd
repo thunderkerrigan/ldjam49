@@ -12,10 +12,8 @@ export (Array, AudioStream) var kissSounds
 var next_card = null
 var successCount = 3
 func _ready():
-	randomize()
-	$MusicPlayer.play()
-	$CardContainer/Card.enabled = true
-	
+	$MiniGameCountdownTimer/Control/CountdownTimer.stop()
+	$MiniGameCountdownTimer/Control/DropAnimationPlayer.stop()
 
 func _on_Card_moving():
 	if $CardContainer.get_child_count() != 1: return
@@ -79,3 +77,10 @@ func on_keep_swiping():
 
 func _on_MiniGameCountdownTimer_countownElapsed():
 	game_over()
+
+
+func _on_swipe_objective_ended():
+	randomize()
+	$MusicPlayer.play()
+	$MiniGameCountdownTimer.start(3)
+	$CardContainer/Card.enabled = true

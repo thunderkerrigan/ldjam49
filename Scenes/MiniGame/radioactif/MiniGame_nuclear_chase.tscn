@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scenes/MiniGame/radioactif/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Sounds/background-loop-funky-02-2487.mp3" type="AudioStream" id=2]
@@ -6,8 +6,9 @@
 [ext_resource path="res://Scenes/MiniGame/Chimie/MiniGameCountdownTimer.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/MiniGame/radioactif/Mob.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Assets/Images/power_plant_build_site_brown_coal_industry_factory_cooling_towers-1133248.jpg!d.jpeg" type="Texture" id=6]
+[ext_resource path="res://Scenes/MiniGame/radioactif/tap_objective.tscn" type="PackedScene" id=7]
 
-[sub_resource type="Shader" id=2]
+[sub_resource type="Shader" id=1]
 code = "/*
 Shader from Godot Shaders - the free shader library.
 godotshaders.com/shader/VHS-and-CRT-monitor-effect
@@ -238,8 +239,8 @@ void fragment()
 	COLOR = text;
 }"
 
-[sub_resource type="ShaderMaterial" id=3]
-shader = SubResource( 2 )
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
 shader_param/overlay = true
 shader_param/scanlines_opacity = 0.4
 shader_param/scanlines_width = 0.25
@@ -262,7 +263,7 @@ shader_param/clip_warp = false
 shader_param/vignette_intensity = 0.4
 shader_param/vignette_opacity = 0.5
 
-[sub_resource type="Curve2D" id=1]
+[sub_resource type="Curve2D" id=3]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 480, 0, 0, 0, 0, 0, 480, 720, 0, 0, 0, 0, 0, 720, 0, 0, 0, 0, 0, 0 )
 }
@@ -283,7 +284,7 @@ position = Vector2( 568, 424 )
 texture = ExtResource( 6 )
 
 [node name="ColorRect" type="ColorRect" parent="Control"]
-material = SubResource( 3 )
+material = SubResource( 2 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = 440.0
@@ -305,7 +306,7 @@ one_shot = true
 position = Vector2( 240, 384 )
 
 [node name="MobPath" type="Path2D" parent="."]
-curve = SubResource( 1 )
+curve = SubResource( 3 )
 
 [node name="MobSpawnLocation" type="PathFollow2D" parent="MobPath"]
 
@@ -315,6 +316,9 @@ curve = SubResource( 1 )
 stream = ExtResource( 2 )
 volume_db = -15.471
 
+[node name="Node2D" parent="." instance=ExtResource( 7 )]
+
 [connection signal="hit" from="Player" to="." method="_game_over"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_MobTimer_timeout"]
 [connection signal="timeout" from="EndTimer" to="." method="_on_EndTimer_timeout"]
+[connection signal="ended" from="Node2D" to="." method="_on_Node2D_ended"]

@@ -12,6 +12,7 @@ func _ready():
 	start(3)
 
 func start(time):
+	$Control/DropAnimationPlayer.stop()	
 	$Control/CountdownTimer.start(time)
 	var randomBomb = randi() % 10
 	if randomBomb > 5:

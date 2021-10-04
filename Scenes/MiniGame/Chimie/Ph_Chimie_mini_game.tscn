@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Assets/Images/Labs.jpg" type="Texture" id=1]
 [ext_resource path="res://Scenes/MiniGame/Chimie/ErlenMeyer.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Scenes/MiniGame/Chimie/pipettes.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Assets/Sounds/corporate-beat-ambient-ig-version-loop-1-7294.mp3" type="AudioStream" id=5]
 [ext_resource path="res://Scenes/MiniGame/Chimie/MiniGameCountdownTimer.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/MiniGame/radioactif/tap_objective.tscn" type="PackedScene" id=7]
 
 [sub_resource type="Animation" id=1]
 resource_name = "shake"
@@ -71,5 +72,8 @@ volume_db = -15.712
 
 [node name="MiniGameCountdownTimer" parent="." instance=ExtResource( 6 )]
 
+[node name="Node2D" parent="." instance=ExtResource( 7 )]
+
 [connection signal="touched" from="Pipettes" to="." method="_on_Pipettes_touched"]
 [connection signal="countownElapsed" from="MiniGameCountdownTimer" to="." method="_on_MiniGameCountdownTimer_countownElapsed"]
+[connection signal="ended" from="Node2D" to="." method="_on_Node2D_ended"]
