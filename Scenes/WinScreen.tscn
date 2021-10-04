@@ -1,11 +1,12 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Assets/Fonts/montserrat/Montserrat-Regular.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://Assets/Fonts/montserrat/Montserrat-Bold.otf" type="DynamicFontData" id=2]
 [ext_resource path="res://Scripts/ObjectiveScreen.gd" type="Script" id=3]
 [ext_resource path="res://Assets/Images/FondWin.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Images/PeriodicElementStamp (2).png" type="Texture" id=5]
 
-[sub_resource type="Shader" id=5]
+[sub_resource type="Shader" id=1]
 code = "// Fireworks shader
 // Based on shadertoy shader by Martijn Steinrucken aka BigWings - 2015 
 // (https://www.shadertoy.com/view/lscGRl)
@@ -104,8 +105,8 @@ void fragment() {
     COLOR = vec4(c, alpha);
 }"
 
-[sub_resource type="ShaderMaterial" id=6]
-shader = SubResource( 5 )
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
 shader_param/PI = 3.14159
 shader_param/TWOPI = 6.28319
 shader_param/NUM_EXPLOSIONS = 8.0
@@ -152,11 +153,11 @@ shader_param/strength = 0.5
 shader_param/speed = 0.5
 shader_param/angle = 0.0
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=5]
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=6]
 size = 44
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 1 )
@@ -165,7 +166,7 @@ font_data = ExtResource( 1 )
 script = ExtResource( 3 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
-material = SubResource( 6 )
+material = SubResource( 2 )
 margin_top = -1.05948
 margin_right = 480.0
 margin_bottom = 718.941
@@ -177,8 +178,18 @@ __meta__ = {
 
 [node name="FondWin" type="Sprite" parent="ColorRect"]
 material = SubResource( 4 )
-position = Vector2( 240.588, 361.91 )
+position = Vector2( 233.461, 535.635 )
+scale = Vector2( 0.51743, 0.51743 )
 texture = ExtResource( 4 )
+
+[node name="PeriodicElementStamp (2)" type="Sprite" parent="ColorRect"]
+visible = false
+position = Vector2( 228.505, 319.796 )
+scale = Vector2( 0.710031, 0.710031 )
+texture = ExtResource( 5 )
+__meta__ = {
+"_editor_description_": ""
+}
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 visible = false
@@ -186,8 +197,8 @@ margin_left = 34.4297
 margin_top = 408.332
 margin_right = 456.429
 margin_bottom = 472.332
-custom_fonts/mono_font = SubResource( 1 )
-custom_fonts/normal_font = SubResource( 2 )
+custom_fonts/mono_font = SubResource( 5 )
+custom_fonts/normal_font = SubResource( 6 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 text = "THAT'S MY TABLE !"
 scroll_active = false

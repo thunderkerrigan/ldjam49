@@ -15,9 +15,7 @@ func _ready():
 
 func _physics_process(delta):
 	$Label.set_text(str(seconds))
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+
 
 
 func _on_CountdownTimer_timeout():

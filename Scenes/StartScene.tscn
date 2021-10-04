@@ -99,7 +99,7 @@ Game = ExtResource( 38 )
 position = Vector2( 240, 360 )
 scale = Vector2( 1, 1.5 )
 frames = SubResource( 3 )
-frame = 12
+frame = 10
 playing = true
 
 [node name="TextureRect" type="TextureRect" parent="."]
@@ -161,8 +161,8 @@ align = 1
 autowrap = true
 
 [node name="atila_head" type="Sprite" parent="."]
-position = Vector2( 226.873, 208 )
-rotation = -0.227985
+position = Vector2( 240, 208 )
+rotation = 0.0116198
 scale = Vector2( 0.448553, 0.448553 )
 texture = ExtResource( 14 )
 
