@@ -59,7 +59,7 @@ shader_param/light_offset = 0.5
 
 [sub_resource type="Animation" id=3]
 resource_name = "BDAnimation"
-length = 24.0
+length = 11.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("Panel:rect_position")
 tracks/0/interp = 1

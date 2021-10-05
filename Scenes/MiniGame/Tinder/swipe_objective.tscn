@@ -7,7 +7,7 @@
 [ext_resource path="res://Assets/Images/tree-road-morning-leaf-highway-asphalt-autumn-lane-season-road-trip-infrastructure-rural-area-road-surface-woody-plant-82610.jpg" type="Texture" id=5]
 [ext_resource path="res://Scenes/MiniGame/Tinder/AnimationPlayer.gd" type="Script" id=6]
 
-[sub_resource type="Shader" id=3]
+[sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
 
 uniform int pixel_size : hint_range(1, 100) = 1;
@@ -25,18 +25,17 @@ void fragment(){
 	COLOR = total / float(pixel_size * pixel_size);
 }"
 
-[sub_resource type="ShaderMaterial" id=4]
-shader = SubResource( 3 )
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
 shader_param/pixel_size = 36.0
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=3]
 size = 128
 outline_size = 2
 outline_color = Color( 0.560784, 0.760784, 0.239216, 1 )
 font_data = ExtResource( 3 )
 
-[sub_resource type="Animation" id=2]
-resource_name = "swipe"
+[sub_resource type="Animation" id=4]
 length = 1.5
 tracks/0/type = "bezier"
 tracks/0/path = NodePath("car_1:position:x")
@@ -133,7 +132,7 @@ tracks/8/keys = {
 script = ExtResource( 4 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
-material = SubResource( 4 )
+material = SubResource( 2 )
 margin_left = -344.0
 margin_top = -16.0
 margin_right = 4823.0
@@ -153,7 +152,7 @@ margin_left = -720.0
 margin_top = -40.0
 margin_right = -233.0
 margin_bottom = 112.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.0509804, 0.329412, 0.152941, 1 )
 text = "SWIPE !"
 __meta__ = {
@@ -169,7 +168,7 @@ margin_left = 320.0
 margin_top = -80.0
 margin_right = 807.0
 margin_bottom = 72.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.0509804, 0.329412, 0.152941, 1 )
 text = "SWIPE !"
 __meta__ = {
@@ -178,5 +177,5 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 method_call_mode = 1
-anims/swipe = SubResource( 2 )
+anims/swipe = SubResource( 4 )
 script = ExtResource( 6 )
